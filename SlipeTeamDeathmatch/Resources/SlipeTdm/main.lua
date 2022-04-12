@@ -1,6 +1,7 @@
 ﻿function init()
 	outputChatBox("Hello TDM!")
 	createMatchesUi()
-    setMatchesUiVisible(true)
+	createMatchUi()
+	createMapsUi()
 end
 addEventHandler("onClientResourceStart", resourceRoot, init)

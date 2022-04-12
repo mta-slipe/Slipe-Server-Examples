@@ -12,14 +12,15 @@ function createMatchesUi()
         playerCount = guiGridListAddColumn(ui.matchList, "Players", 0.15),
     }
     
-    ui.createMatchButton = guiCreateButton(550, 25, 225, 40, "Create match", false, ui.matchesWindow)
+    ui.matchNameLabel = guiCreateLabel(550, 25, 225, 40, "Name: ", false, ui.matchesWindow)
+    ui.matchName = guiCreateEdit(550, 45, 225, 40, "", false, ui.matchesWindow)
+    ui.createMatchButton = guiCreateButton(550, 95, 225, 40, "Create match", false, ui.matchesWindow)
     addEventHandler("onClientGUIClick", ui.createMatchButton, handleCreateMatchClick, false)
-    ui.joinMatchButton = guiCreateButton(550, 75, 225, 40, "Join match", false, ui.matchesWindow)
+    ui.joinMatchButton = guiCreateButton(550, 175, 225, 40, "Join match", false, ui.matchesWindow)
     addEventHandler("onClientGUIClick", ui.joinMatchButton, handleJoinMatchClick, false)
-    ui.refreshButton = guiCreateButton(550, 125, 225, 40, "Refresh matches", false, ui.matchesWindow)
+    ui.refreshButton = guiCreateButton(550, 225, 225, 40, "Refresh matches", false, ui.matchesWindow)
     addEventHandler("onClientGUIClick", ui.refreshButton, handleRefreshClick, false)
 
-    requestMatches()
     setMatchesUiVisible(false)
 end
 
@@ -47,7 +48,7 @@ function handleJoinMatchClick()
 end
 
 function handleCreateMatchClick()
-    createMatch("Poo")
+    createMatch(guiGetText(ui.matchName))
 end
 
 function handleRefreshClick()

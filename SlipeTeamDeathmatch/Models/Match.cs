@@ -1,6 +1,8 @@
-﻿using SlipeServer.Packets.Lua.Camera;
+﻿using SlipeServer.Packets.Definitions.Lua;
+using SlipeServer.Packets.Lua.Camera;
 using SlipeServer.Server.Elements;
 using SlipeServer.Server.Elements.Events;
+using SlipeServer.Server.Enums;
 using SlipeServer.Server.Extensions;
 using SlipeTeamDeathmatch.Elements;
 
@@ -20,6 +22,9 @@ public class Match
 
     public TdmPlayer Host { get; set; }
 
+    private readonly List<Death> deaths;
+    public IReadOnlyCollection<Death> Deaths => this.deaths.AsReadOnly();
+
     public bool CanStart => this.State == MatchState.Lobby && this.Map != null;
 
     public Match(int id, string name, TdmPlayer host)
@@ -29,6 +34,8 @@ public class Match
         this.Host = host;
 
         this.players = new();
+        this.deaths = new();
+
         this.AddPlayer(host);
     }
 
@@ -59,6 +66,9 @@ public class Match
         this.Map?.Elements.DestroyFor(new Player[] { player });
 
         CheckForWin();
+
+        if (!this.players.Any())
+            this.Abandoned?.Invoke(this, new());
     }
 
     public void SetMap(Map? map)
@@ -103,6 +113,9 @@ public class Match
                 player.Camera.Fade(CameraFade.In);
                 foreach (var weapon in spawnPoint.Weapons)
                     player.Weapons.Add(new(weapon.Key, weapon.Value));
+
+                player.SendStart();
+                player.Account.MatchCount++;
             }
         }
     }
@@ -112,19 +125,45 @@ public class Match
         this.State = MatchState.Finished;
 
         foreach (var player in this.players.ToArray())
-        {
             RemovePlayer(player);
-        }
+    }
+
+    public void Reset()
+    {
+        this.State = MatchState.Lobby;
+        this.deaths.Clear();
+
+        foreach (var player in this.players)
+            player.SendMatch(this);
     }
 
     public void EndMatch(MatchResult result)
     {
         this.Result = result;
+        this.Ended?.Invoke(result);
+        this.State = MatchState.Review;
+
+        foreach (var player in this.players)
+            player.SendMatch(this);
 
         Task.Run(async () =>
         {
-            await Task.Delay(5000);
-            Stop();
+            await Task.Delay(10000);
+            Reset();
+        });
+    }
+
+    public LuaValue GetLuaValue()
+    {
+        return new LuaValue(new Dictionary<LuaValue, LuaValue>()
+        {
+            ["id"] = this.Id,
+            ["name"] = this.Name,
+            ["players"] = this.Players.Select(x => x.GetLuaValue()).ToArray(),
+            ["mapName"] = this.Map?.Name ?? "N/A",
+            ["state"] = this.State.ToString(),
+            ["host"] = this.Host.GetLuaValue(),
+            ["deaths"] = this.Deaths.Select(x => x.GetLuaValue()).ToArray(),
         });
     }
 
@@ -142,11 +181,22 @@ public class Match
             .Distinct();
 
         if (livingTeams.Count() == 1)
-            this.EndMatch(new MatchResult(livingTeams.Single()));
+            this.EndMatch(new MatchResult(livingTeams.Single(), this.deaths));
     }
 
     private void HandlePlayerWasted(Ped sender, PedWastedEventArgs e)
     {
+        var killer = e.Killer as TdmPlayer;
+        if (e.Source is not TdmPlayer victim)
+            return;
+
+        victim.Account.DeathCount++;
+
+        if (killer != null)
+            killer.Account.KillCount++;
+
+        this.deaths.Add(new Death(victim, killer, (WeaponId)e.WeaponType));
+
         CheckForWin();
     }
 
@@ -158,5 +208,6 @@ public class Match
 
     public event EventHandler<EventArgs>? Started;
     public event Action<MatchResult>? Ended;
+    public event EventHandler<EventArgs>? Abandoned;
 }
 

@@ -13,7 +13,7 @@ end
 
 function joinMatch(match)
 	triggerServerEvent("Slipe.TeamDeathMatch.JoinMatch", localPlayer, {
-		match.id
+		Id = match.id
 	})
 end
 
@@ -39,12 +39,37 @@ addEvent("Slipe.TeamDeathMatch.Matches", true)
 addEventHandler("Slipe.TeamDeathMatch.Matches", root, function(data)
 	matches = data
 	populateMatchList()
+    setMatchUiVisible(false)
+    setMatchesUiVisible(true)
+end)
+
+addEvent("Slipe.TeamDeathMatch.Match", true)
+addEventHandler("Slipe.TeamDeathMatch.Match", root, function(data)
+	match = data
+
+	iprint(match)
+	if (match.state == "Lobby") then
+		populateMatchUi()
+		setMatchesUiVisible(false)
+		setMatchUiVisible(true)
+	elseif (match.state == "Review") then
+		
+	end
 end)
 
 addEvent("Slipe.TeamDeathMatch.Maps", true)
 addEventHandler("Slipe.TeamDeathMatch.Maps", root, function(data)
 	maps = data
 	populateMapList()
+    setMatchUiVisible(false)
+    setMapsUiVisible(true)
+end)
+
+addEvent("Slipe.TeamDeathMatch.Start", true)
+addEventHandler("Slipe.TeamDeathMatch.Start", root, function()
+    setMatchesUiVisible(false)
+    setMatchUiVisible(false)
+    setMapsUiVisible(false)
 end)
 
 addEvent("Slipe.TeamDeathMatch.Error", true)

@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
-using SlipeServer.Packets.Definitions.Lua;
 using SlipeServer.Server;
 using SlipeServer.Server.Elements;
+using SlipeServer.Server.Elements.Events;
 using SlipeServer.Server.Events;
 using SlipeServer.Server.Resources;
 using SlipeServer.Server.Resources.Providers;
 using SlipeServer.Server.Services;
 using SlipeTeamDeathmatch.Elements;
-using SlipeTeamDeathmatch.Extensions;
 using SlipeTeamDeathmatch.LuaValues;
 using SlipeTeamDeathmatch.Models;
 using SlipeTeamDeathmatch.Services;
@@ -58,26 +57,45 @@ public class MatchLogic
     private void HandlePlayerJoin(Player player)
     {
         this.resource.StartFor(player);
+
+        player.ResourceStarted += HandlePlayerResourceStarted;
+    }
+
+    private void HandlePlayerResourceStarted(Player sender, PlayerResourceStartedEventArgs e)
+    {
+        var player = (sender as TdmPlayer)!;
+        if (e.NetId == this.resource.NetId)
+        {
+            if (player.Match == null)
+                player.SendMatches(this.matches);
+            else
+                player.SendMatch(player.Match);
+        }
     }
 
     private void HandleRequestMatches(LuaEvent luaEvent)
     {
-        this.luaEventService.TriggerEvent("Slipe.TeamDeathMatch.Matches", luaEvent.Player, GetMatchesLuaValue());
+        (luaEvent.Player as TdmPlayer)!.SendMatches(this.matches);
     }
 
     private void HandleRequestMaps(LuaEvent luaEvent)
     {
-        this.luaEventService.TriggerEvent("Slipe.TeamDeathMatch.Maps", luaEvent.Player, GetMapsLuaValue());
+        (luaEvent.Player as TdmPlayer)!.SendMaps(this.mapService.AvailableMaps);
     }
 
     private void HandleJoinRequest(LuaEvent luaEvent)
     {
+        var player = (luaEvent.Player as TdmPlayer)!;
         try
         {
+            if (player.Match != null)
+            {
+                player.SendErrorMessage("You can not join this match as you are already in a match.");
+                return;
+            }
             var luaValue = new JoinMatchLuaValue();
             luaValue.Parse(luaEvent.Parameters[0]);
 
-            var player = (luaEvent.Player as TdmPlayer)!;
 
             var match = this.matches.Single(x => x.Id == luaValue.Id);
             match.AddPlayer(player);
@@ -86,39 +104,38 @@ public class MatchLogic
         }
         catch (Exception e)
         {
-            luaEvent.Player.SendErrorMessage("Unable to join game");
+            player.SendErrorMessage("Unable to join game");
             this.logger.LogError("{message}", e.Message);
         }
     }
 
     private void HandleLeaveRequest(LuaEvent luaEvent)
     {
+        var player = (luaEvent.Player as TdmPlayer)!;
         try
         {
-            var player = (luaEvent.Player as TdmPlayer)!;
             var match = player.Match;
 
             if (match == null)
                 return;
 
             this.logger.LogInformation("{player} left match \"{match}\" ({id})", player.Name, match.Name, match.Id);
-            
+
             match.RemovePlayer(player);
-            if (!match.Players.Any())
-                this.matches.Remove(match);
+            player.SendMatches(this.matches);
         }
         catch (Exception e)
         {
-            luaEvent.Player.SendErrorMessage("Unable to leave game");
+            player.SendErrorMessage("Unable to leave game");
             this.logger.LogError("{message}", e.Message);
         }
     }
 
     private void HandleCreateRequest(LuaEvent luaEvent)
     {
+        var player = (luaEvent.Player as TdmPlayer)!;
         try
         {
-            var player = (luaEvent.Player as TdmPlayer)!;
 
             if (player.Match != null)
             {
@@ -128,23 +145,36 @@ public class MatchLogic
             var luaValue = new CreateMatchLuaValue();
             luaValue.Parse(luaEvent.Parameters[0]);
 
+            if (string.IsNullOrEmpty(luaValue.Name.Trim()))
+            {
+                player.SendErrorMessage("You must enter a name for your match.");
+                return;
+            }
+
             var match = new Match(this.matchId++, luaValue.Name, player);
             this.matches.Add(match);
+            match.Abandoned += (sender, args) =>
+            {
+                this.matches.Remove(match);
+                this.logger.LogInformation("Match \"{match}\" was abandoned", match.Name);
+            };
+
+            player.SendMatch(match);
 
             this.logger.LogInformation("{player} created match \"{match}\" ({id})", player.Name, match.Name, match.Id);
         }
         catch (Exception e)
         {
-            luaEvent.Player.SendErrorMessage("Unable to create match");
+            player.SendErrorMessage("Unable to create match");
             this.logger.LogError("{message}", e.Message);
         }
     }
 
     private void HandleStartMatchRequest(LuaEvent luaEvent)
     {
+        var player = (luaEvent.Player as TdmPlayer)!;
         try
         {
-            var player = (luaEvent.Player as TdmPlayer)!;
             var match = player.Match;
             if (match != null && match.Host == player && match.CanStart)
             {
@@ -152,17 +182,18 @@ public class MatchLogic
                 this.logger.LogInformation("{player} started the match \"{match}\" ({id})", player.Name, match.Name, match.Id);
             }
             else
-                luaEvent.Player.SendErrorMessage("You can not start this match");
+                player.SendErrorMessage("You can not start this match");
         }
         catch (Exception e)
         {
-            luaEvent.Player.SendErrorMessage("Unable to start match");
+            player.SendErrorMessage("Unable to start match");
             this.logger.LogError("{message}", e.Message);
         }
     }
 
     private void HandleSetMapRequest(LuaEvent luaEvent)
     {
+        var player = (luaEvent.Player as TdmPlayer)!;
         try
         {
             var luaValue = new SelectMapLuaValue();
@@ -170,53 +201,22 @@ public class MatchLogic
 
             var map = this.mapService.GetMap(luaValue.Name);
 
-            var player = (luaEvent.Player as TdmPlayer)!;
 
             if (player.Match != null && player.Match.Host == player)
             {
                 player.Match.SetMap(map);
                 this.logger.LogInformation("{player} set the map to \"{map}\" for match \"{match}\" ({id})", player.Name, luaValue.Name, player.Match.Name, player.Match.Id);
+
+                foreach (var matchPlayer in player.Match.Players)
+                    matchPlayer.SendMatch(player.Match);
             }
             else
-                luaEvent.Player.SendErrorMessage("You can not set the map for this match");
+                player.SendErrorMessage("You can not set the map for this match");
         }
         catch (Exception e)
         {
-            luaEvent.Player.SendErrorMessage("Unable to create game");
+            player.SendErrorMessage("Unable to create game");
             this.logger.LogError("{message}", e.Message);
         }
-    }
-
-    private LuaValue GetMatchesLuaValue()
-    {
-        var table = new Dictionary<LuaValue, LuaValue>();
-        int matchesIndex = 1;
-
-        foreach (var match in this.matches)
-        {
-            table[matchesIndex++] = new LuaValue(new Dictionary<LuaValue, LuaValue>()
-            {
-                ["id"] = match.Id,
-                ["name"] = match.Name,
-                ["players"] = new LuaValue(match.Players
-                    .Select(x => new LuaValue(x.Id))),
-                ["mapName"] = match.Map?.Name ?? "N/A",
-                ["state"] = match.State.ToString(),
-                ["host"] = new LuaValue(match.Host.Id)
-            });
-        }
-
-        return new LuaValue(table);
-    }
-
-    private LuaValue GetMapsLuaValue()
-    {
-        var table = new Dictionary<LuaValue, LuaValue>();
-        int mapsIndex = 1;
-
-        foreach (var map in this.mapService.AvailableMaps)
-            table[mapsIndex++] = map;
-
-        return new LuaValue(table);
     }
 }
