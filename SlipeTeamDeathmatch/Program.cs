@@ -19,6 +19,7 @@ var server = new MtaServer<TdmPlayer>(builder =>
     builder.UseConfiguration(TdmConfiguration.Config);
     builder.AddDefaults();
 
+    builder.AddLogic<TdmResourceLogic>();
     builder.AddLogic<MatchLogic>();
 
     builder.ConfigureServices(services =>
@@ -31,6 +32,7 @@ var server = new MtaServer<TdmPlayer>(builder =>
         );
 
         services.AddSingleton<MapService>(x => new MapService(x.GetRequiredService<RootElement>(), "Maps"));
+        services.AddSingleton<MatchService>();
 
 #if DEBUG
         builder.AddNetWrapper(dllPath: "net_d", port: 50667);
