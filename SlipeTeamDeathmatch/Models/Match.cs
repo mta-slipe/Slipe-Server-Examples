@@ -144,7 +144,10 @@ public class Match
         this.State = MatchState.Review;
 
         foreach (var player in this.players)
+        {
             player.SendMatch(this);
+            player.Camera.Fade(CameraFade.Out, 5);
+        }
 
         Task.Run(async () =>
         {
