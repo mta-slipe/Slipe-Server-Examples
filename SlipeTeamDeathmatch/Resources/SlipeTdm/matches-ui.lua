@@ -2,6 +2,33 @@
 local screenX, screenY = guiGetScreenSize()
 local centerX, centerY = screenX * 0.5, screenY * 0.5
 
+local function handleJoinMatchClick()
+    local row = guiGridListGetSelectedItem(ui.matchList)
+    if (row == -1) then
+        createErrorUi("You have to select a match to join.")
+        return
+    end
+
+    local match = guiGridListGetItemData(ui.matchList, row, ui.matchListColumns.name)
+    joinMatch(match)
+end
+
+local function handleCreateMatchClick()
+    createMatch(guiGetText(ui.matchName))
+end
+
+local function handleRefreshClick()
+    requestMatches()
+end
+
+local function handleLoginClick()
+    setLoginVisible(true)
+end
+
+local function handleLogoutClick()
+    logout()
+end
+
 function createMatchesUi()
 	ui.matchesWindow = guiCreateWindow(centerX - 400, centerY - 300, 800, 600, "Slipe Team Deathmatch : Matches", false)
     ui.matchList = guiCreateGridList(25, 25, 500, 550, false, ui.matchesWindow)
@@ -21,6 +48,13 @@ function createMatchesUi()
     ui.refreshButton = guiCreateButton(550, 225, 225, 40, "Refresh matches", false, ui.matchesWindow)
     addEventHandler("onClientGUIClick", ui.refreshButton, handleRefreshClick, false)
 
+    ui.loginButton = guiCreateButton(550, 525, 225, 40, "Login", false, ui.matchesWindow)
+    addEventHandler("onClientGUIClick", ui.loginButton, handleLoginClick, false)
+
+    ui.logoutButton = guiCreateButton(550, 525, 225, 40, "Logout", false, ui.matchesWindow)
+    addEventHandler("onClientGUIClick", ui.logoutButton, handleLogoutClick, false)
+
+    guiSetVisible(ui.logoutButton, false)
     setMatchesUiVisible(false)
 end
 
@@ -36,26 +70,12 @@ function populateMatchList()
     end
 end
 
-function handleJoinMatchClick()
-    local row = guiGridListGetSelectedItem(ui.matchList)
-    if (row == -1) then
-        createErrorUi("You have to select a match to join.")
-        return
-    end
-
-    local match = guiGridListGetItemData(ui.matchList, row, ui.matchListColumns.name)
-    joinMatch(match)
-end
-
-function handleCreateMatchClick()
-    createMatch(guiGetText(ui.matchName))
-end
-
-function handleRefreshClick()
-    requestMatches()
-end
-
 function setMatchesUiVisible(visible)
     guiSetVisible(ui.matchesWindow, visible)
     showCursor(visible)
+end
+
+function setMatchesUiLoginButtonState()
+    guiSetVisible(ui.loginButton, not isLoggedIn)
+    guiSetVisible(ui.logoutButton, isLoggedIn)
 end

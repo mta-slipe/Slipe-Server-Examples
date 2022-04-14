@@ -1,5 +1,6 @@
 ﻿maps = {}
 matches = {}
+isLoggedIn = false
 
 function createMatch(name)
 	triggerServerEvent("Slipe.TeamDeathMatch.CreateMatch", localPlayer, {
@@ -35,6 +36,25 @@ function requestMatches()
 	triggerServerEvent("Slipe.TeamDeathMatch.RequestMatches", localPlayer)
 end
 
+function login(username, password)
+	triggerServerEvent("Slipe.TeamDeathMatch.Login", localPlayer, {
+		Username = username,
+		Password = password
+	})
+end
+
+function register(username, password, passwordConfirmation)
+	triggerServerEvent("Slipe.TeamDeathMatch.Register", localPlayer, {
+		Username = username,
+		Password = password,
+		PasswordConfirmation = passwordConfirmation
+	})
+end
+
+function logout()
+	triggerServerEvent("Slipe.TeamDeathMatch.Logout", localPlayer)
+end
+
 addEvent("Slipe.TeamDeathMatch.Matches", true)
 addEventHandler("Slipe.TeamDeathMatch.Matches", root, function(data)
 	matches = data
@@ -47,7 +67,6 @@ addEvent("Slipe.TeamDeathMatch.Match", true)
 addEventHandler("Slipe.TeamDeathMatch.Match", root, function(data)
 	match = data
 
-	iprint(match)
 	if (match.state == "Lobby") then
 		populateMatchUi()
 		setMatchesUiVisible(false)
@@ -75,6 +94,19 @@ end)
 addEvent("Slipe.TeamDeathMatch.Error", true)
 addEventHandler("Slipe.TeamDeathMatch.Error", root, function(error)
 	createErrorUi(error)
+end)
+
+addEvent("Slipe.TeamDeathMatch.LoggedIn", true)
+addEventHandler("Slipe.TeamDeathMatch.LoggedIn", root, function()
+    setLoginVisible(false)	
+	isLoggedIn = true
+	setMatchesUiLoginButtonState()
+end)
+
+addEvent("Slipe.TeamDeathMatch.LoggedOut", true)
+addEventHandler("Slipe.TeamDeathMatch.LoggedOut", root, function()
+	isLoggedIn = false
+	setMatchesUiLoginButtonState()
 end)
 
 addCommandHandler("crun", function(command, ...)

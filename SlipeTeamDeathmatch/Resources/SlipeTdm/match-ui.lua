@@ -2,6 +2,18 @@
 local screenX, screenY = guiGetScreenSize()
 local centerX, centerY = screenX * 0.5, screenY * 0.5
 
+local function handleChangeMapClick()
+    requestMaps()
+end
+
+local function handleStartClick()
+    startMatch()
+end
+
+local function handleLeaveClick()
+    leaveMatch()
+end
+
 function createMatchUi()
 	ui.matchWindow = guiCreateWindow(centerX - 350, centerY - 300, 700, 450, "Slipe Team Deathmatch : Match", false)
 
@@ -50,18 +62,6 @@ function populateMatchUi()
         guiGridListSetItemText(ui.playerList, row, ui.playerListColumns.killCount, player.killCount, false, true)
         guiGridListSetItemText(ui.playerList, row, ui.playerListColumns.deathCount, player.deathCount, false, true)
     end
-end
-
-function handleChangeMapClick()
-    requestMaps()
-end
-
-function handleStartClick()
-    startMatch()
-end
-
-function handleLeaveClick()
-    leaveMatch()
 end
 
 function setMatchUiVisible(visible)

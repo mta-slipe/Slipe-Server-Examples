@@ -2,6 +2,25 @@
 local screenX, screenY = guiGetScreenSize()
 local centerX, centerY = screenX * 0.5, screenY * 0.5
 
+local function handleSelectClick()
+    local row = guiGridListGetSelectedItem(ui.mapList)
+    if (row == -1) then
+        createErrorUi("You have to select a map.")
+        return
+    end
+
+    local map = guiGridListGetItemText(ui.mapList, row, ui.mapListColumns.name)
+    selectMap(map)
+
+    setMapsUiVisible(false)
+    setMatchUiVisible(true)
+end
+
+local function handleCancelClick()
+    setMapsUiVisible(false)
+    setMatchUiVisible(true)
+end
+
 function createMapsUi()
 	ui.mapsWindow = guiCreateWindow(centerX - 150, centerY - 200, 300, 400, "Slipe Team Deathmatch : Maps", false)
     ui.mapList = guiCreateGridList(25, 25, 250, 300, false, ui.mapsWindow)
@@ -23,25 +42,6 @@ function populateMapList()
         local row = guiGridListAddRow(ui.mapList)
         guiGridListSetItemText(ui.mapList, row, ui.mapListColumns.name, map, false, false)
     end
-end
-
-function handleSelectClick()
-    local row = guiGridListGetSelectedItem(ui.mapList)
-    if (row == -1) then
-        createErrorUi("You have to select a map.")
-        return
-    end
-
-    local map = guiGridListGetItemText(ui.mapList, row, ui.mapListColumns.name)
-    selectMap(map)
-
-    setMapsUiVisible(false)
-    setMatchUiVisible(true)
-end
-
-function handleCancelClick()
-    setMapsUiVisible(false)
-    setMatchUiVisible(true)
 end
 
 function setMapsUiVisible(visible)
