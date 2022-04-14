@@ -11,10 +11,7 @@ public class TdmPlayer : Player
 
     public TdmPlayer() : base()
     {
-        this.Account = new Account(Guid.NewGuid().ToString())
-        {
-            IsGuest = true
-        };
+        this.Account = Account.CreateGuest();
     }
 
     public void SendErrorMessage(string message)
@@ -44,6 +41,16 @@ public class TdmPlayer : Player
     public void SendStart()
     {
         TriggerLuaEvent("Slipe.TeamDeathMatch.Start");
+    }
+
+    public void SendLoggedIn()
+    {
+        TriggerLuaEvent("Slipe.TeamDeathMatch.LoggedIn");
+    }
+
+    public void SendLoggedOut()
+    {
+        TriggerLuaEvent("Slipe.TeamDeathMatch.LoggedOut");
     }
 
     public LuaValue GetLuaValue()

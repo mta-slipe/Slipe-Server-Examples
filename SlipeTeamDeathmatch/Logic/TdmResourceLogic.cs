@@ -48,6 +48,9 @@ public class TdmResourceLogic
                 player.SendMatches(this.matchService.Matches);
             else
                 player.SendMatch(player.Match);
+
+            if (player.Account != null)
+                player.SendLoggedIn();
         }
     }
 }

@@ -12,6 +12,8 @@ using SlipeTeamDeathmatch.Elements;
 using SlipeTeamDeathmatch.IdGenerators;
 using SlipeTeamDeathmatch.Logic;
 using SlipeTeamDeathmatch.Middleware;
+using SlipeTeamDeathmatch.Persistence;
+using SlipeTeamDeathmatch.Persistence.Repositories;
 using SlipeTeamDeathmatch.Services;
 
 var server = new MtaServer<TdmPlayer>(builder =>
@@ -21,9 +23,13 @@ var server = new MtaServer<TdmPlayer>(builder =>
 
     builder.AddLogic<TdmResourceLogic>();
     builder.AddLogic<MatchLogic>();
+    builder.AddLogic<AuthenticationLogic>();
 
     builder.ConfigureServices(services =>
     {
+        services.AddDbContext<TdmContext>();
+        services.AddTransient(typeof(IDbRepository<>), typeof(DbRepository<>));
+
         services.AddSingleton<ILogger, ConsoleLogger>();
         services.AddSingleton(typeof(ISyncHandlerMiddleware<>), typeof(MatchMiddleware<>));
 
@@ -31,6 +37,8 @@ var server = new MtaServer<TdmPlayer>(builder =>
             new PlayerIdGenerator(x.GetRequiredService<IElementRepository>(), IdGeneratorConstants.PlayerIdStart, IdGeneratorConstants.PlayerIdStop)
         );
 
+        services.AddTransient<IPasswordService, PasswordService>();
+        services.AddTransient<AccountService>();
         services.AddSingleton<MapService>(x => new MapService(x.GetRequiredService<RootElement>(), "Maps"));
         services.AddSingleton<MatchService>();
 

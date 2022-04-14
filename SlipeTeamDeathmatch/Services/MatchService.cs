@@ -10,7 +10,7 @@ public class MatchService
     private readonly MapService mapService;
 
     private readonly List<Match> matches;
-    public IReadOnlyCollection<Match> Matches => matches.AsReadOnly();
+    public IReadOnlyCollection<Match> Matches => this.matches.AsReadOnly();
 
     public MatchService(
         ILogger logger,
