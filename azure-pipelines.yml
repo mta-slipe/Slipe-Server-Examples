@@ -8,12 +8,12 @@ trigger:
 pr:
 - main
 
-
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
+jobs:
 - job: 'dotnet_build'
   pool:
     vmImage: 'windows-2022'
