@@ -49,7 +49,7 @@ public class TdmResourceLogic
             else
                 player.SendMatch(player.Match);
 
-            if (player.Account != null)
+            if (!player.Account.IsGuest)
                 player.SendLoggedIn();
         }
     }

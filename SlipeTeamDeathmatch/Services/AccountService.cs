@@ -25,6 +25,9 @@ public class AccountService
         this.passwordService = passwordService;
 
         mtaServer.PlayerJoined += HandlePlayerJoined;
+
+        // call this to "wake" entity framework so the first request does not take long.
+        this.accountRepository.GetAsync(0);
     }
 
     private void HandlePlayerJoined(TdmPlayer player)

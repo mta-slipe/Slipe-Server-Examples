@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SlipeServer.Server;
 using SlipeServer.Server.Elements;
@@ -15,6 +16,9 @@ using SlipeTeamDeathmatch.Middleware;
 using SlipeTeamDeathmatch.Persistence;
 using SlipeTeamDeathmatch.Persistence.Repositories;
 using SlipeTeamDeathmatch.Services;
+
+// this is neccesary for docker support
+Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)!);
 
 var server = new MtaServer<TdmPlayer>(builder =>
 {
@@ -43,13 +47,14 @@ var server = new MtaServer<TdmPlayer>(builder =>
         services.AddSingleton<MatchService>();
 
 #if DEBUG
-        builder.AddNetWrapper(dllPath: "net_d", port: 50667);
+        // there is no debug net dll for x64
+        if (!Environment.Is64BitProcess)
+            builder.AddNetWrapper(dllPath: "net_d", port: 50667);
 #endif
     });
 })
 {
     GameType = "Slipe:TDM"
 };
-
 server.Start();
 await Task.Delay(-1);
