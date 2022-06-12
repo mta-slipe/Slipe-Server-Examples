@@ -1,7 +1,6 @@
 ﻿using SlipeServer.LuaControllers;
 using SlipeServer.LuaControllers.Attributes;
 using SlipeTeamDeathmatch.Elements;
-using SlipeTeamDeathmatch.LuaValues;
 using SlipeTeamDeathmatch.Services;
 
 namespace SlipeTeamDeathmatch.Controllers;
