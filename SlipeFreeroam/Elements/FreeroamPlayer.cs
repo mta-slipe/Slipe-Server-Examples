@@ -20,7 +20,7 @@ public class FreeroamPlayer : Player
         this.server = server;
 
         Vehicles = new();
-        Blip = new Blip(this.position, BlipIcon.Marker);
+        Blip = new Blip(this.position, BlipIcon.Marker).AssociateWith(server);
         Blip.AttachTo(this);
 
         Name = Name.StripColorCode();

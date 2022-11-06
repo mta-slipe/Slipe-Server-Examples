@@ -23,7 +23,7 @@ public class ChatBehaviour
                         chatBox.OutputTo(player, "Stop repeating yourself!", Color.Red, true, ChatEchoType.Player, player);
                         return;
                     }
-                    if ((DateTime.UtcNow - player.LastMessageTime).TotalMilliseconds < 350)
+                    if ((DateTime.UtcNow - player.LastMessageTime).TotalMilliseconds < 1000)
                     {
                         chatBox.OutputTo(player, "Stop spamming main chat!", Color.Red, true, ChatEchoType.Player, player);
                         return;
@@ -38,7 +38,7 @@ public class ChatBehaviour
                     string fullMessage = $"{prefix} {message}";
 
                     chatBox.Output(fullMessage, Color.White, true, ChatEchoType.Player, player);
-                    logger?.LogInformation("{message}", fullMessage);
+                    logger?.LogInformation("{message}", $"{player.Name}: message");
                 }
             };
         };

@@ -123,6 +123,7 @@ function onLocalSettingChange(setting,value)
 
 end
 
+00 DONE
 function joinHandler(player)
 	if not player then
 		player = source
@@ -160,6 +161,8 @@ local settingsToSend = {
 	"vehicles/disallowed_warp",
 }
 
+-- update settings
+-- TODO
 local function updateSettings()
 	local settings = {}
 	for _, setting in ipairs(settingsToSend) do
@@ -168,6 +171,8 @@ local function updateSettings()
 	return settings
 end
 
+-- send settings
+-- TODO
 local function sendSettings(player,settingPlayer,settings)
 
 	if not player and isElement(player) then
@@ -180,6 +185,12 @@ local function sendSettings(player,settingPlayer,settings)
 
 end
 
+-- shows welcome map
+-- DONE
+-- requests settings
+-- TODO
+-- sends settings from other clients
+-- TODO
 addEvent('onLoadedAtClient', true)
 addEventHandler('onLoadedAtClient', resourceRoot,
 	function()
@@ -198,6 +209,8 @@ addEventHandler('onLoadedAtClient', resourceRoot,
 	false
 )
 
+-- handle setting change
+-- TODO
 function onSettingChange(key,_,new)
 	local access = key:sub(1, 1) -- we always have modifiers
 	if access ~= "*" and access ~= "#" and access ~= "@" then
@@ -221,6 +234,8 @@ function onSettingChange(key,_,new)
 end
 addEventHandler("onSettingChange", root, onSettingChange)
 
+-- shows map
+-- DONE
 function showMap(player)
 
 	if isPedDead(player) then
@@ -229,6 +244,8 @@ function showMap(player)
 
 end
 
+-- get all clothes
+-- TODO
 addEvent('onClothesInit', true)
 addEventHandler('onClothesInit', resourceRoot,
 	function()
@@ -262,6 +279,8 @@ addEventHandler('onClothesInit', resourceRoot,
 	end
 )
 
+-- sends player gravity
+-- TODO
 addEvent('onPlayerGravInit', true)
 addEventHandler('onPlayerGravInit', root,
 	function()

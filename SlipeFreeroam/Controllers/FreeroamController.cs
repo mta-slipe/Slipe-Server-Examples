@@ -1,10 +1,7 @@
-﻿using System.Drawing;
-using System.Numerics;
-using SlipeFreeroam.Elements;
+﻿using SlipeFreeroam.Elements;
 using SlipeServer.LuaControllers;
 using SlipeServer.LuaControllers.Attributes;
 using SlipeServer.Server;
-using SlipeServer.Server.Elements;
 
 namespace SlipeFreeroam.Controllers;
 

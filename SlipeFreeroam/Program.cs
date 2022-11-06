@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SlipeFreeroam;
+using SlipeFreeroam.Behaviour;
 using SlipeFreeroam.Elements;
 using SlipeFreeroam.Logic;
 using SlipeServer.LuaControllers;
@@ -30,6 +31,7 @@ var server = MtaServer.CreateWithDiSupport<FreeroamPlayer>(builder =>
     builder.AddLogic<SpawnLogic>();
 
     builder.AddBehaviour<EventLoggingBehaviour>();
+    builder.AddBehaviour<ChatBehaviour>();
 
     builder.AddLuaControllers();
 });
