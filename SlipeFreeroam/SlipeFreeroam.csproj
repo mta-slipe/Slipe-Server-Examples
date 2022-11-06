@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SlipeServer.LuaControllers" Version="0.1.0-CI-20221106-212555" />
+    <PackageReference Include="SlipeServer.Server" Version="0.1.0-CI-20221106-212555" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Update="Resources\**\*">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>
