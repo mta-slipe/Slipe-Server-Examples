@@ -123,7 +123,7 @@ function onLocalSettingChange(setting,value)
 
 end
 
-00 DONE
+-- DONE
 function joinHandler(player)
 	if not player then
 		player = source

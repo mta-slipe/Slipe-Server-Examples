@@ -3,7 +3,9 @@ using System.Numerics;
 using SlipeFreeroam.Elements;
 using SlipeServer.LuaControllers;
 using SlipeServer.LuaControllers.Attributes;
+using SlipeServer.Packets.Lua.Camera;
 using SlipeServer.Server;
+using SlipeServer.Server.Elements;
 
 namespace SlipeFreeroam.Controllers;
 
@@ -70,6 +72,19 @@ public class VehicleController : BaseLuaController<FreeroamPlayer>
     {
         vehicle.Health = 1000;
         vehicle.ResetDoorsWheelsPanelsLights();
+    }
+
+    [LuaEvent("fadeVehiclePassengersCamera")]
+    public void FadePassengerCamera(bool fade)
+    {
+        var vehicle = this.Context.Player.Vehicle;
+
+        if (vehicle == null)
+            return;
+
+        foreach (var occupant in vehicle.Occupants)
+            if (occupant.Value is Player player)
+                player.Camera.Fade(fade ? CameraFade.In : CameraFade.Out);
     }
 }
 
