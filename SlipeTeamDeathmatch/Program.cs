@@ -21,7 +21,8 @@ using SlipeTeamDeathmatch.Services;
 // this is neccesary for docker support
 Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)!);
 
-var server = new MtaServer<TdmPlayer>(builder =>
+
+var server = MtaServer.Create<TdmPlayer>(builder =>
 {
     builder.UseConfiguration(TdmConfiguration.Config);
     builder.AddDefaults();
@@ -29,8 +30,6 @@ var server = new MtaServer<TdmPlayer>(builder =>
     builder.AddLuaControllers();
 
     builder.AddLogic<TdmResourceLogic>();
-    //builder.AddLogic<MatchLogic>();
-    //builder.AddLogic<AuthenticationLogic>();
 
     builder.ConfigureServices(services =>
     {
@@ -55,9 +54,7 @@ var server = new MtaServer<TdmPlayer>(builder =>
             builder.AddNetWrapper(dllPath: "net_d", port: 50667);
 #endif
     });
-})
-{
-    GameType = "Slipe:TDM"
-};
+});
+server.GameType = "Slipe:TDM";
 server.Start();
 await Task.Delay(-1);
