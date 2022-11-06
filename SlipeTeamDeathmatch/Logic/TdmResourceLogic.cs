@@ -1,6 +1,4 @@
 ﻿using SlipeServer.Server;
-using SlipeServer.Server.Elements;
-using SlipeServer.Server.Elements.Events;
 using SlipeServer.Server.Resources;
 using SlipeServer.Server.Resources.Providers;
 using SlipeServer.Server.Services;
