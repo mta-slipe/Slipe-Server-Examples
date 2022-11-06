@@ -37,7 +37,7 @@ public class VehicleController : BaseLuaController<FreeroamPlayer>
     [LuaEvent("setVehiclePaintjob")]
     public void SetPaintjob(FreeroamVehicle vehicle, int paintjob)
     {
-        vehicle.PaintJob = (byte)paintjob;
+        vehicle.PaintJob = (byte)(paintjob - 1);
     }
 
     [LuaEvent("setVehicleColor")]

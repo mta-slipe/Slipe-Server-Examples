@@ -31,7 +31,7 @@ public class SpawnLogic
         this.chatBox.OutputTo(player, "Welcome to Freeroam", Color.Green);
         this.chatBox.OutputTo(player, "Press F1 to show/hide control", Color.Green);
 
-        player.Wasted += HandlePlayerWasted;
+        //player.Wasted += HandlePlayerWasted;
     }
 
     private Color GetRandomColor()

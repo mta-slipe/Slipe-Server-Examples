@@ -28,26 +28,26 @@ g_Trailers = {
 g_RPCFunctions = {
 	addPedClothes = { option = 'clothes', descr = 'Modifying clothes' },
 	addVehicleUpgrade = { option = 'upgrades', descr = 'Adding/removing upgrades' },
-	fadeVehiclePassengersCamera = true,
-	fixVehicle = { option = 'repair', descr = 'Repairing vehicles' },
-	giveMeVehicles = { option = 'createvehicle', descr = 'Creating vehicles' },
-	giveMeWeapon = { option = 'weapons.enabled', descr = 'Getting weapons' },
-	givePedJetPack = { option = 'jetpack', descr = 'Getting a jetpack' },
+	--[[DONE]]fadeVehiclePassengersCamera = true,
+	--[[DONE]]fixVehicle = { option = 'repair', descr = 'Repairing vehicles' },
+	--[[DONE]]giveMeVehicles = { option = 'createvehicle', descr = 'Creating vehicles' },
+	--[[DONE]]giveMeWeapon = { option = 'weapons.enabled', descr = 'Getting weapons' },
+	--[[DONE]]givePedJetPack = { option = 'jetpack', descr = 'Getting a jetpack' },
 	removePedClothes = { option = 'clothes', descr = 'Modifying clothes' },
 	removePedFromVehicle = true,
-	removePedJetPack = { option = 'jetpack', descr = 'Removing a jetpack' },
+	--[[DONE]]removePedJetPack = { option = 'jetpack', descr = 'Removing a jetpack' },
 	removeVehicleUpgrade = { option = 'upgrades', descr = 'Adding/removing upgrades' },
-	setElementAlpha = { option = 'alpha', descr = 'Changing your alpha' },
-	setElementInterior = true,
-	setMySkin = { option = 'setskin', descr = 'Setting skin' },
+	--[[DONE]]setElementAlpha = { option = 'alpha', descr = 'Changing your alpha' },
+	--[[DONE]]setElementInterior = true,
+	--[[DONE]]setMySkin = { option = 'setskin', descr = 'Setting skin' },
 	setPedAnimation = { option = 'anim', descr = 'Setting an animation' },
 	setPedFightingStyle = { option = 'setstyle', descr = 'Setting fighting style' },
 	setPedGravity = { option = 'gravity.enabled', descr = 'Setting gravity' },
 	setPedStat = { option = 'stats', descr = 'Changing stats' },
-	setVehicleColor = true,
-	setVehicleHeadLightColor = true,
+	--[[DONE]]setVehicleColor = true,
+	--[[DONE]]setVehicleHeadLightColor = true,
 	setVehicleOverrideLights = { option = 'lights', descr = 'Forcing lights' },
-	setVehiclePaintjob = { option = 'paintjob', descr = 'Applying paintjobs' },
+	--[[DONE]]setVehiclePaintjob = { option = 'paintjob', descr = 'Applying paintjobs' },
 	warpMeIntoVehicle = true,
 }
 
@@ -291,7 +291,7 @@ addEventHandler('onPlayerGravInit', root,
 	end
 )
 
--- TODO
+-- DONE
 function setMySkin(skinid)
 	if not isElement(source) then return end
 	if getElementModel(source) == skinid then return end
@@ -364,7 +364,7 @@ function warpMeIntoVehicle(vehicle)
 end
 
 -- gives weapons
--- TODO
+-- DONE
 local sawnoffAntiAbuse = {}
 function giveMeWeapon(weapon, amount)
 	if table.find(getOption('weapons.disallowed'), weapon) then
@@ -439,7 +439,7 @@ end
 
 
 -- fades all passenger's camera's
--- TODO
+-- DONE
 function fadeVehiclePassengersCamera(toggle)
 	local vehicle = getPedOccupiedVehicle(source)
 	if not vehicle then
