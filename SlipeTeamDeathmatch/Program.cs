@@ -21,7 +21,6 @@ using SlipeTeamDeathmatch.Services;
 // this is neccesary for docker support
 Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)!);
 
-
 var server = MtaServer.Create<TdmPlayer>(builder =>
 {
     builder.UseConfiguration(TdmConfiguration.Config);
