@@ -1385,7 +1385,7 @@ end
 function setPlayerInterior(x,y,z,i)
 	setCameraMatrix(x,y,z)
 	setCameraInterior(i)
-	server.setElementInterior(localPlayer, i)
+	server.setElementInterior(localPlayer, tonumber(i))
 	setTimer(setPositionAfterInterior,1000,1,x,y,z)
 end
 
@@ -1396,12 +1396,12 @@ function setInterior(leaf)
 		return
 	end
 	if vehicle then
-		server.setElementInterior(vehicle, leaf.world)
+		server.setElementInterior(vehicle, tonumber(leaf.world))
 		for i=0,getVehicleMaxPassengers(vehicle) do
 			local player = getVehicleOccupant(vehicle, i)
 			if player and player ~= localPlayer then
-				server.setElementInterior(player, leaf.world)
-				server.setCameraInterior(player, leaf.world)
+				server.setElementInterior(player, tonumber(leaf.world))
+				server.setCameraInterior(player, tonumber(leaf.world))
 			end
 		end
 	end

@@ -2,6 +2,7 @@
 using SlipeServer.LuaControllers;
 using SlipeServer.LuaControllers.Attributes;
 using SlipeServer.Packets.Definitions.Lua;
+using SlipeServer.Packets.Enums;
 using SlipeServer.Server;
 using SlipeServer.Server.Elements;
 using SlipeServer.Server.Enums;
@@ -69,16 +70,21 @@ public class PlayerController : BaseLuaController<FreeroamPlayer>
     }
 
     [LuaEvent("setElementInterior")]
-    public void SetInterior(FreeroamPlayer element, int interior)
+    public void SetInterior(FreeroamPlayer player, int interior)
     {
-        System.Console.WriteLine(interior);
-        element.Interior = (byte)interior;
+        player.Interior = (byte)interior;
     }
 
     [LuaEvent("setElementAlpha")]
-    public void SetAlpha(FreeroamPlayer element, int alpha)
+    public void SetAlpha(FreeroamPlayer player, int alpha)
     {
-        element.Alpha = (byte)alpha;
+        player.Alpha = (byte)alpha;
+    }
+
+    [LuaEvent("setPedStat")]
+    public void SetPedStat(FreeroamPlayer player, int stat, float value)
+    {
+        player.SetStat((PedStat)stat, value);
     }
 }
 

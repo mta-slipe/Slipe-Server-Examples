@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SlipeFreeroam;
-using SlipeFreeroam.Behaviour;
 using SlipeFreeroam.Elements;
 using SlipeFreeroam.Logic;
 using SlipeServer.LuaControllers;
