@@ -29,9 +29,9 @@ var server = MtaServer.CreateWithDiSupport<FreeroamPlayer>(builder =>
 
     builder.AddLogic<FreeroamResourceLogic>();
     builder.AddLogic<SpawnLogic>();
+    builder.AddLogic<ChatLogic>();
 
     builder.AddBehaviour<EventLoggingBehaviour>();
-    builder.AddBehaviour<ChatBehaviour>();
 
     builder.AddLuaControllers();
 });
