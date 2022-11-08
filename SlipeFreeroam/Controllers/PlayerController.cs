@@ -4,6 +4,7 @@ using SlipeServer.LuaControllers;
 using SlipeServer.LuaControllers.Attributes;
 using SlipeServer.Packets.Enums;
 using SlipeServer.Server;
+using SlipeServer.Server.Elements.Enums;
 using SlipeServer.Server.Enums;
 
 namespace SlipeFreeroam.Controllers;
@@ -107,9 +108,28 @@ public class PlayerController : BaseLuaController<FreeroamPlayer>
     }
 
     [LuaEvent("setPedAnimation")]
+    public void StopAnimation(FreeroamPlayer player, bool foo)
+    {
+        player.StopAnimation();
+    }
+
+    [LuaEvent("setPedAnimation")]
     public void SetAnimation(FreeroamPlayer player, string group, string animation, bool loops, bool updatesPosition)
     {
+        if (animation == null)
+        {
+            player.StopAnimation();
+        }
+        else
+        {
+            player.SetAnimation(group, animation, null, loops, updatesPosition);
+        }
+    }
 
+    [LuaEvent("setPedFightingStyle")]
+    public void SetFightingStyle(FreeroamPlayer player, FightingStyle fightingStyle)
+    {
+        player.FightingStyle = fightingStyle;
     }
 }
 

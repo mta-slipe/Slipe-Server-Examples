@@ -40,8 +40,8 @@ g_RPCFunctions = {
 	--[[DONE]]setElementAlpha = { option = 'alpha', descr = 'Changing your alpha' },
 	--[[DONE]]setElementInterior = true,
 	--[[DONE]]setMySkin = { option = 'setskin', descr = 'Setting skin' },
-	setPedAnimation = { option = 'anim', descr = 'Setting an animation' },
-	setPedFightingStyle = { option = 'setstyle', descr = 'Setting fighting style' },
+	--[[DONE]]setPedAnimation = { option = 'anim', descr = 'Setting an animation' },
+	--[[DONE]]setPedFightingStyle = { option = 'setstyle', descr = 'Setting fighting style' },
 	setPedGravity = { option = 'gravity.enabled', descr = 'Setting gravity' },
 	--[[DONE]]setPedStat = { option = 'stats', descr = 'Changing stats' },
 	--[[DONE]]setVehicleColor = true,
@@ -172,7 +172,7 @@ local function updateSettings()
 end
 
 -- send settings
--- TODO
+-- DONE
 local function sendSettings(player,settingPlayer,settings)
 
 	if not player and isElement(player) then
@@ -188,7 +188,7 @@ end
 -- shows welcome map
 -- DONE
 -- requests settings
--- TODO
+-- DONE
 -- sends settings from other clients
 -- TODO
 addEvent('onLoadedAtClient', true)
@@ -245,7 +245,7 @@ function showMap(player)
 end
 
 -- get all clothes
--- TODO
+-- DONE
 addEvent('onClothesInit', true)
 addEventHandler('onClothesInit', resourceRoot,
 	function()

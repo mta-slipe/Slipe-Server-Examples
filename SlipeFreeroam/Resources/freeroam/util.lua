@@ -1,5 +1,5 @@
 addEvent('onClientCall', true)
-addEventHandler('onClientCall',resourceRoot,
+addEventHandler('onClientCall',root,
 	function(fnName, ...)
 		local fn = _G
 		local path = fnName:split('.')
@@ -7,8 +7,7 @@ addEventHandler('onClientCall',resourceRoot,
 			fn = fn[pathpart]
 		end
 		fn(...)
-	end,
-	false
+	end
 )
 
 function setCameraPlayerMode()

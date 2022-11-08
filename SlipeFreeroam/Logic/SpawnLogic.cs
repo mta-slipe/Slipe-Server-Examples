@@ -2,6 +2,7 @@
 using SlipeServer.Server;
 using SlipeServer.Server.Elements;
 using SlipeServer.Server.Elements.Enums;
+using SlipeServer.Server.Elements.Events;
 using SlipeServer.Server.Services;
 using System.Drawing;
 using System.Numerics;
@@ -31,7 +32,7 @@ public class SpawnLogic
         this.chatBox.OutputTo(player, "Welcome to Freeroam", Color.Green);
         this.chatBox.OutputTo(player, "Press F1 to show/hide control", Color.Green);
 
-        //player.Wasted += HandlePlayerWasted;
+        player.Wasted += HandlePlayerWasted;
     }
 
     private Color GetRandomColor()
@@ -41,7 +42,7 @@ public class SpawnLogic
         return Color.FromArgb(255, buffer[0], buffer[1], buffer[2]);
     }
 
-    private void HandlePlayerWasted(Ped sender, SlipeServer.Server.Elements.Events.PedWastedEventArgs e)
+    private void HandlePlayerWasted(Ped sender, PedWastedEventArgs e)
     {
         (sender as Player)?.Spawn(new Vector3(0, 0, 3), 0, (ushort)PedModel.Sweet, 0, 0);
     }

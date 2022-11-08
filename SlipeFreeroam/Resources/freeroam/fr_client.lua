@@ -396,11 +396,11 @@ addCommandHandler('wp', giveWeaponCommand)
 addCommandHandler("setstyle",
 	function(cmd, style)
 		style = style and tonumber(style) or 5
-
+		
 		if getPedFightingStyle(localPlayer) == style then
 			return
 		end
-
+		
 		if allowedStyles[style] then
 			server.setPedFightingStyle(localPlayer, style)
 		else

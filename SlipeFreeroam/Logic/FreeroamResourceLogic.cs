@@ -11,18 +11,22 @@ public class FreeroamResourceLogic
     private readonly Resource freeroamResource;
     private readonly FreeroamClientSettings clientSettings;
     private readonly DebugLog debugLog;
+    private readonly LuaEventService luaEventService;
 
     public FreeroamResourceLogic(
         MtaServer<FreeroamPlayer> server,
         IResourceProvider resourceProvider,
         FreeroamClientSettings clientSettings,
-        DebugLog debugLog)
+        DebugLog debugLog,
+        LuaEventService luaEventService)
     {
+        this.clientSettings = clientSettings;
+        this.debugLog = debugLog;
+        this.luaEventService = luaEventService;
+
         this.freeroamResource = resourceProvider.GetResource("freeroam");
 
         server.PlayerJoined += HandlePlayerJoin;
-        this.clientSettings = clientSettings;
-        this.debugLog = debugLog;
     }
 
     private async void HandlePlayerJoin(FreeroamPlayer player)
@@ -35,6 +39,6 @@ public class FreeroamResourceLogic
 
     private void SendSettings(FreeroamPlayer player)
     {
-
+        player.SendGlobalSettings(this.clientSettings);
     }
 }
