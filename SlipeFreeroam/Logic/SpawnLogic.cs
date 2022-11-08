@@ -24,7 +24,11 @@ public class SpawnLogic
     {
         player.NametagColor = GetRandomColor();
 
-        player.Spawn(new Vector3(0, 0, 3), 0, (ushort)PedModel.Sweet, 0, 0);
+        player.Clothing.Head = 0;
+        player.Clothing.Trousers = 7;
+        player.Clothing.Shoes = 6;
+        player.Clothing.Shirt = 1;
+        player.Spawn(new Vector3(0, 0, 3), 0, (ushort)PedModel.Cj, 0, 0);
         player.Camera.Target = player;
         player.Camera.Fade(CameraFade.In);
 

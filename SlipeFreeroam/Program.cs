@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using SlipeFreeroam;
 using SlipeFreeroam.Elements;
 using SlipeFreeroam.Logic;
+using SlipeFreeroam.Services;
 using SlipeServer.LuaControllers;
 using SlipeServer.Server;
 using SlipeServer.Server.Behaviour;
@@ -22,6 +23,7 @@ var server = MtaServer.CreateWithDiSupport<FreeroamPlayer>(builder =>
 
     builder.ConfigureServices(services =>
     {
+        services.AddSingleton<ClothingService>();
         services.AddSingleton<FreeroamClientSettings>();
         services.AddSingleton<ILogger, ConsoleLogger>();
     });

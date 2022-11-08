@@ -8,8 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SlipeServer.LuaControllers" Version="0.1.0-CI-20221106-212555" />
-    <PackageReference Include="SlipeServer.Server" Version="0.1.0-CI-20221106-212555" />
+    <None Remove="Data\clothes.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\clothes.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SlipeServer.LuaControllers" Version="0.1.0-CI-20221108-180751" />
+    <PackageReference Include="SlipeServer.Server" Version="0.1.0-CI-20221108-180751" />
   </ItemGroup>
 
 	<ItemGroup>

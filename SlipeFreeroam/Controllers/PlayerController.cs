@@ -1,22 +1,23 @@
 ﻿using SlipeFreeroam.Elements;
+using SlipeFreeroam.Services;
 using SlipeServer.LuaControllers;
 using SlipeServer.LuaControllers.Attributes;
-using SlipeServer.Packets.Definitions.Lua;
 using SlipeServer.Packets.Enums;
 using SlipeServer.Server;
-using SlipeServer.Server.Elements;
 using SlipeServer.Server.Enums;
 
 namespace SlipeFreeroam.Controllers;
 
-[LuaController("")]
+[LuaController("", false)]
 public class PlayerController : BaseLuaController<FreeroamPlayer>
 {
     private readonly MtaServer server;
+    private readonly ClothingService clothingService;
 
-    public PlayerController(MtaServer server)
+    public PlayerController(MtaServer server, ClothingService clothingService)
     {
         this.server = server;
+        this.clothingService = clothingService;
     }
 
     [LuaEvent("onFreeroamSuicide")]
@@ -82,9 +83,33 @@ public class PlayerController : BaseLuaController<FreeroamPlayer>
     }
 
     [LuaEvent("setPedStat")]
-    public void SetPedStat(FreeroamPlayer player, int stat, float value)
+    public void SetPedStat(FreeroamPlayer player, PedStat stat, float value)
     {
-        player.SetStat((PedStat)stat, value);
+        player.SetStat(stat, value);
+    }
+
+    [LuaEvent("onClothesInit")]
+    public void RequestClothes()
+    {
+        this.Context.Player.SendClothes(this.clothingService.GetClothingData(this.Context.Player));
+    }
+
+    [LuaEvent("addPedClothes")]
+    public void AddClothes(FreeroamPlayer player, string texture, string model, ClothingType type)
+    {
+        this.clothingService.AddClothingToPlayer(player, model, texture);
+    }
+
+    [LuaEvent("removePedClothes")]
+    public void RemoveClothes(FreeroamPlayer player, ClothingType type)
+    {
+        this.clothingService.RemoveClothingFromPlayer(player, type);
+    }
+
+    [LuaEvent("setPedAnimation")]
+    public void SetAnimation(FreeroamPlayer player, string group, string animation, bool loops, bool updatesPosition)
+    {
+
     }
 }
 

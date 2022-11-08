@@ -26,14 +26,14 @@ g_Trailers = {
 }
 
 g_RPCFunctions = {
-	addPedClothes = { option = 'clothes', descr = 'Modifying clothes' },
+	--[[DONE]]addPedClothes = { option = 'clothes', descr = 'Modifying clothes' },
 	addVehicleUpgrade = { option = 'upgrades', descr = 'Adding/removing upgrades' },
 	--[[DONE]]fadeVehiclePassengersCamera = true,
 	--[[DONE]]fixVehicle = { option = 'repair', descr = 'Repairing vehicles' },
 	--[[DONE]]giveMeVehicles = { option = 'createvehicle', descr = 'Creating vehicles' },
 	--[[DONE]]giveMeWeapon = { option = 'weapons.enabled', descr = 'Getting weapons' },
 	--[[DONE]]givePedJetPack = { option = 'jetpack', descr = 'Getting a jetpack' },
-	removePedClothes = { option = 'clothes', descr = 'Modifying clothes' },
+	--[[DONE]]removePedClothes = { option = 'clothes', descr = 'Modifying clothes' },
 	removePedFromVehicle = true,
 	--[[DONE]]removePedJetPack = { option = 'jetpack', descr = 'Removing a jetpack' },
 	removeVehicleUpgrade = { option = 'upgrades', descr = 'Adding/removing upgrades' },
@@ -43,7 +43,7 @@ g_RPCFunctions = {
 	setPedAnimation = { option = 'anim', descr = 'Setting an animation' },
 	setPedFightingStyle = { option = 'setstyle', descr = 'Setting fighting style' },
 	setPedGravity = { option = 'gravity.enabled', descr = 'Setting gravity' },
-	setPedStat = { option = 'stats', descr = 'Changing stats' },
+	--[[DONE]]setPedStat = { option = 'stats', descr = 'Changing stats' },
 	--[[DONE]]setVehicleColor = true,
 	--[[DONE]]setVehicleHeadLightColor = true,
 	setVehicleOverrideLights = { option = 'lights', descr = 'Forcing lights' },
