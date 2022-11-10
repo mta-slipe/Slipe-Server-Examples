@@ -6,4 +6,6 @@ These gamemodes are intended as tech demos and are not indended for public / pro
 The repo contains the following projects:
 - [SlipeTeamDeathmatch](https://github.com/mta-slipe/Slipe-Server-Examples/tree/main/SlipeTeamDeathmatch)  
   Team deathmatch gamemode
+- [Freeroam](https://github.com/mta-slipe/Slipe-Server-Examples/tree/main/Freeroam)  
+  Port of the default freeroam resource
 - More to be added
