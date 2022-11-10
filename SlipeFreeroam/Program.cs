@@ -17,6 +17,7 @@ var server = MtaServer.CreateWithDiSupport<FreeroamPlayer>(builder =>
     var exceptBehaviours = ServerBuilderDefaultBehaviours.DefaultChatBehaviour;
 #if DEBUG
     exceptBehaviours |= ServerBuilderDefaultBehaviours.MasterServerAnnouncementBehaviour;
+    builder.AddBehaviour<EventLoggingBehaviour>();
 #endif
 
     builder.AddDefaults(exceptBehaviours: exceptBehaviours);
@@ -31,8 +32,6 @@ var server = MtaServer.CreateWithDiSupport<FreeroamPlayer>(builder =>
     builder.AddLogic<FreeroamResourceLogic>();
     builder.AddLogic<SpawnLogic>();
     builder.AddLogic<ChatLogic>();
-
-    builder.AddBehaviour<EventLoggingBehaviour>();
 
     builder.AddLuaControllers();
 });

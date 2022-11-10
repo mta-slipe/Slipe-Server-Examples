@@ -86,5 +86,13 @@ public class VehicleController : BaseLuaController<FreeroamPlayer>
             if (occupant.Value is Player player)
                 player.Camera.Fade(fade ? CameraFade.In : CameraFade.Out);
     }
+
+    [LuaEvent("warpMeIntoVehicle")]
+    public void WarpIntoVehicle(Vehicle vehicle)
+    {
+        var seat = vehicle.GetFreePassengerSeat();
+        if (seat != null)
+            this.Context.Player.WarpIntoVehicle(vehicle, seat.Value);
+    }
 }
 
