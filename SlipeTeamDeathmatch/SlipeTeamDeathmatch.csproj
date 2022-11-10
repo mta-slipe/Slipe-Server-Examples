@@ -18,7 +18,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
-    <PackageReference Include="SlipeServer.Server" Version="0.1.0-CI-20220416-183032" />
+    <PackageReference Include="SlipeServer.LuaControllers" Version="0.1.0-CI-20221106-151852" />
+    <PackageReference Include="SlipeServer.Server" Version="0.1.0-CI-20221106-151852" />
   </ItemGroup>
 
   <ItemGroup>

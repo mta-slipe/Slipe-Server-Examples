@@ -1,19 +1,19 @@
-﻿using SlipeServer.Server.Elements.IdGeneration;
-using SlipeServer.Server.Repositories;
+﻿using SlipeServer.Server.ElementCollections;
+using SlipeServer.Server.Elements.IdGeneration;
 
 namespace SlipeTeamDeathmatch.IdGenerators;
 
 public class PlayerIdGenerator : IElementIdGenerator
 {
-    private readonly IElementRepository elementRepository;
+    private readonly IElementCollection elementCollection;
     private readonly uint start;
     private readonly uint stop;
     private uint idCounter;
 
-    public PlayerIdGenerator(IElementRepository elementRepository, uint start, uint stop)
+    public PlayerIdGenerator(IElementCollection elementCollection, uint start, uint stop)
     {
         this.idCounter = start;
-        this.elementRepository = elementRepository;
+        this.elementCollection = elementCollection;
         this.start = start;
         this.stop = stop;
     }
@@ -21,7 +21,7 @@ public class PlayerIdGenerator : IElementIdGenerator
     public uint GetId()
     {
         var start = this.idCounter;
-        while (this.elementRepository.Get(this.idCounter) != null)
+        while (this.elementCollection.Get(this.idCounter) != null)
         {
             this.idCounter++;
             if (this.idCounter > this.stop)

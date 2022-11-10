@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Data\clothes.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\clothes.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SlipeServer.LuaControllers" Version="0.1.0-CI-20221108-222628" />
+    <PackageReference Include="SlipeServer.Server" Version="0.1.0-CI-20221108-222628" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Update="Resources\**\*">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>

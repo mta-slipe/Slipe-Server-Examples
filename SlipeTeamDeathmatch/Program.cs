@@ -1,12 +1,13 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SlipeServer.LuaControllers;
 using SlipeServer.Server;
+using SlipeServer.Server.ElementCollections;
 using SlipeServer.Server.Elements;
 using SlipeServer.Server.Elements.IdGeneration;
 using SlipeServer.Server.Loggers;
 using SlipeServer.Server.PacketHandling.Handlers.Middleware;
-using SlipeServer.Server.Repositories;
 using SlipeServer.Server.ServerBuilders;
 using SlipeTeamDeathmatch;
 using SlipeTeamDeathmatch.Elements;
@@ -20,14 +21,14 @@ using SlipeTeamDeathmatch.Services;
 // this is neccesary for docker support
 Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)!);
 
-var server = new MtaServer<TdmPlayer>(builder =>
+var server = MtaServer.Create<TdmPlayer>(builder =>
 {
     builder.UseConfiguration(TdmConfiguration.Config);
     builder.AddDefaults();
 
+    builder.AddLuaControllers();
+
     builder.AddLogic<TdmResourceLogic>();
-    builder.AddLogic<MatchLogic>();
-    builder.AddLogic<AuthenticationLogic>();
 
     builder.ConfigureServices(services =>
     {
@@ -38,7 +39,7 @@ var server = new MtaServer<TdmPlayer>(builder =>
         services.AddSingleton(typeof(ISyncHandlerMiddleware<>), typeof(MatchMiddleware<>));
 
         services.AddSingleton<IElementIdGenerator, PlayerIdGenerator>(x =>
-            new PlayerIdGenerator(x.GetRequiredService<IElementRepository>(), IdGeneratorConstants.PlayerIdStart, IdGeneratorConstants.PlayerIdStop)
+            new PlayerIdGenerator(x.GetRequiredService<IElementCollection>(), IdGeneratorConstants.PlayerIdStart, IdGeneratorConstants.PlayerIdStop)
         );
 
         services.AddTransient<IPasswordService, PasswordService>();
@@ -52,9 +53,7 @@ var server = new MtaServer<TdmPlayer>(builder =>
             builder.AddNetWrapper(dllPath: "net_d", port: 50667);
 #endif
     });
-})
-{
-    GameType = "Slipe:TDM"
-};
+});
+server.GameType = "Slipe:TDM";
 server.Start();
 await Task.Delay(-1);

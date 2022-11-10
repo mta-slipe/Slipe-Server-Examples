@@ -3,9 +3,7 @@ matches = {}
 isLoggedIn = false
 
 function createMatch(name)
-	triggerServerEvent("Slipe.TeamDeathMatch.CreateMatch", localPlayer, {
-		Name = name
-	})
+	triggerServerEvent("Slipe.TeamDeathMatch.CreateMatch", localPlayer, name)
 end
 
 function leaveMatch()
@@ -13,15 +11,11 @@ function leaveMatch()
 end
 
 function joinMatch(match)
-	triggerServerEvent("Slipe.TeamDeathMatch.JoinMatch", localPlayer, {
-		Id = match.id
-	})
+	triggerServerEvent("Slipe.TeamDeathMatch.JoinMatch", localPlayer, match.id)
 end
 
 function selectMap(map)
-	triggerServerEvent("Slipe.TeamDeathMatch.SetMap", localPlayer, {
-		Name = map
-	})
+	triggerServerEvent("Slipe.TeamDeathMatch.SetMap", localPlayer, map)
 end
 
 function startMatch()
@@ -37,18 +31,11 @@ function requestMatches()
 end
 
 function login(username, password)
-	triggerServerEvent("Slipe.TeamDeathMatch.Login", localPlayer, {
-		Username = username,
-		Password = password
-	})
+	triggerServerEvent("Slipe.TeamDeathMatch.Login", localPlayer, username, password)
 end
 
 function register(username, password, passwordConfirmation)
-	triggerServerEvent("Slipe.TeamDeathMatch.Register", localPlayer, {
-		Username = username,
-		Password = password,
-		PasswordConfirmation = passwordConfirmation
-	})
+	triggerServerEvent("Slipe.TeamDeathMatch.Register", localPlayer, username, password, passwordConfirmation)
 end
 
 function logout()

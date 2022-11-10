@@ -1,6 +1,4 @@
 ﻿using SlipeServer.Server;
-using SlipeServer.Server.Elements;
-using SlipeServer.Server.Elements.Events;
 using SlipeServer.Server.Resources;
 using SlipeServer.Server.Resources.Providers;
 using SlipeServer.Server.Services;
@@ -14,7 +12,7 @@ public class TdmResourceLogic
     private readonly MatchService matchService;
     private Resource resource;
 
-    public TdmResourceLogic(MtaServer mtaServer,
+    public TdmResourceLogic(MtaServer<TdmPlayer> mtaServer,
         IResourceProvider resourceProvider,
         CommandService commandService,
         MatchService matchService)
@@ -32,25 +30,16 @@ public class TdmResourceLogic
         mtaServer.PlayerJoined += HandlePlayerJoin;
     }
 
-    private void HandlePlayerJoin(Player player)
+    private async void HandlePlayerJoin(TdmPlayer player)
     {
-        this.resource.StartFor(player);
+        await this.resource.StartForAsync(player);
 
-        player.ResourceStarted += HandlePlayerResourceStarted;
-    }
+        if (player.Match == null)
+            player.SendMatches(this.matchService.Matches);
+        else
+            player.SendMatch(player.Match);
 
-    private void HandlePlayerResourceStarted(Player sender, PlayerResourceStartedEventArgs e)
-    {
-        var player = (sender as TdmPlayer)!;
-        if (e.NetId == this.resource.NetId)
-        {
-            if (player.Match == null)
-                player.SendMatches(this.matchService.Matches);
-            else
-                player.SendMatch(player.Match);
-
-            if (!player.Account.IsGuest)
-                player.SendLoggedIn();
-        }
+        if (!player.Account.IsGuest)
+            player.SendLoggedIn();
     }
 }

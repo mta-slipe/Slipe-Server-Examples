@@ -1,0 +1,1823 @@
+﻿[
+  {
+    "1": "group",
+    "type": 0,
+    "name": "Torso",
+    "children": [
+      {
+        "id": 0,
+        "model": "torso",
+        "texture": "player_torso"
+      },
+      {
+        "id": 1,
+        "model": "vest",
+        "texture": "vestblack"
+      },
+      {
+        "id": 2,
+        "model": "vest",
+        "texture": "vest"
+      },
+      {
+        "id": 3,
+        "model": "tshirt2",
+        "texture": "tshirt2horiz"
+      },
+      {
+        "id": 4,
+        "model": "tshirt",
+        "texture": "tshirtwhite"
+      },
+      {
+        "id": 5,
+        "model": "tshirt",
+        "texture": "tshirtilovels"
+      },
+      {
+        "id": 6,
+        "model": "tshirt",
+        "texture": "tshirtblunts"
+      },
+      {
+        "id": 7,
+        "model": "shirtb",
+        "texture": "shirtbplaid"
+      },
+      {
+        "id": 8,
+        "model": "shirtb",
+        "texture": "shirtbcheck"
+      },
+      {
+        "id": 9,
+        "model": "field",
+        "texture": "field"
+      },
+      {
+        "id": 10,
+        "model": "tshirt",
+        "texture": "tshirterisyell"
+      },
+      {
+        "id": 11,
+        "model": "tshirt",
+        "texture": "tshirterisorn"
+      },
+      {
+        "id": 12,
+        "model": "trackytop1",
+        "texture": "trackytop2eris"
+      },
+      {
+        "id": 13,
+        "model": "bbjack",
+        "texture": "bbjackrim"
+      },
+      {
+        "id": 14,
+        "model": "bbjack",
+        "texture": "bballjackrstar"
+      },
+      {
+        "id": 15,
+        "model": "baskball",
+        "texture": "baskballdrib"
+      },
+      {
+        "id": 16,
+        "model": "baskball",
+        "texture": "baskballrim"
+      },
+      {
+        "id": 17,
+        "model": "tshirt",
+        "texture": "sixtyniners"
+      },
+      {
+        "id": 18,
+        "model": "baseball",
+        "texture": "bandits"
+      },
+      {
+        "id": 19,
+        "model": "tshirt",
+        "texture": "tshirtprored"
+      },
+      {
+        "id": 20,
+        "model": "tshirt",
+        "texture": "tshirtproblk"
+      },
+      {
+        "id": 21,
+        "model": "trackytop1",
+        "texture": "trackytop1pro"
+      },
+      {
+        "id": 22,
+        "model": "sweat",
+        "texture": "hockeytop"
+      },
+      {
+        "id": 23,
+        "model": "sleevt",
+        "texture": "bbjersey"
+      },
+      {
+        "id": 24,
+        "model": "trackytop1",
+        "texture": "shellsuit"
+      },
+      {
+        "id": 25,
+        "model": "tshirt",
+        "texture": "tshirtheatwht"
+      },
+      {
+        "id": 26,
+        "model": "tshirt",
+        "texture": "tshirtbobomonk"
+      },
+      {
+        "id": 27,
+        "model": "tshirt",
+        "texture": "tshirtbobored"
+      },
+      {
+        "id": 28,
+        "model": "tshirt",
+        "texture": "tshirtbase5"
+      },
+      {
+        "id": 29,
+        "model": "tshirt",
+        "texture": "tshirtsuburb"
+      },
+      {
+        "id": 30,
+        "model": "hoodya",
+        "texture": "hoodyamerc"
+      },
+      {
+        "id": 31,
+        "model": "hoodya",
+        "texture": "hoodyabase5"
+      },
+      {
+        "id": 32,
+        "model": "hoodya",
+        "texture": "hoodyarockstar"
+      },
+      {
+        "id": 33,
+        "model": "wcoat",
+        "texture": "wcoatblue"
+      },
+      {
+        "id": 34,
+        "model": "coach",
+        "texture": "coach"
+      },
+      {
+        "id": 35,
+        "model": "coach",
+        "texture": "coachsemi"
+      },
+      {
+        "id": 36,
+        "model": "sweat",
+        "texture": "sweatrstar"
+      },
+      {
+        "id": 37,
+        "model": "hoodyA",
+        "texture": "hoodyAblue"
+      },
+      {
+        "id": 38,
+        "model": "hoodyA",
+        "texture": "hoodyAblack"
+      },
+      {
+        "id": 39,
+        "model": "hoodyA",
+        "texture": "hoodyAgreen"
+      },
+      {
+        "id": 40,
+        "model": "sleevt",
+        "texture": "sleevtbrown"
+      },
+      {
+        "id": 41,
+        "model": "shirta",
+        "texture": "shirtablue"
+      },
+      {
+        "id": 42,
+        "model": "shirta",
+        "texture": "shirtayellow"
+      },
+      {
+        "id": 43,
+        "model": "shirta",
+        "texture": "shirtagrey"
+      },
+      {
+        "id": 44,
+        "model": "shirtb",
+        "texture": "shirtbgang"
+      },
+      {
+        "id": 45,
+        "model": "tshirt",
+        "texture": "tshirtzipcrm"
+      },
+      {
+        "id": 46,
+        "model": "tshirt",
+        "texture": "tshirtzipgry"
+      },
+      {
+        "id": 47,
+        "model": "denim",
+        "texture": "denimfade"
+      },
+      {
+        "id": 48,
+        "model": "hawaii",
+        "texture": "bowling"
+      },
+      {
+        "id": 49,
+        "model": "hoodjack",
+        "texture": "hoodjackbeige"
+      },
+      {
+        "id": 50,
+        "model": "baskball",
+        "texture": "baskballloc"
+      },
+      {
+        "id": 51,
+        "model": "tshirt",
+        "texture": "tshirtlocgrey"
+      },
+      {
+        "id": 52,
+        "model": "tshirt",
+        "texture": "tshirtmaddgrey"
+      },
+      {
+        "id": 53,
+        "model": "tshirt",
+        "texture": "tshirtmaddgrn"
+      },
+      {
+        "id": 54,
+        "model": "suit1",
+        "texture": "suit1grey"
+      },
+      {
+        "id": 55,
+        "model": "suit1",
+        "texture": "suit1blk"
+      },
+      {
+        "id": 56,
+        "model": "leather",
+        "texture": "leather"
+      },
+      {
+        "id": 57,
+        "model": "painter",
+        "texture": "painter"
+      },
+      {
+        "id": 58,
+        "model": "hawaii",
+        "texture": "hawaiiwht"
+      },
+      {
+        "id": 59,
+        "model": "hawaii",
+        "texture": "hawaiired"
+      },
+      {
+        "id": 60,
+        "model": "trackytop1",
+        "texture": "sportjack"
+      },
+      {
+        "id": 61,
+        "model": "suit1",
+        "texture": "suit1red"
+      },
+      {
+        "id": 62,
+        "model": "suit1",
+        "texture": "suit1blue"
+      },
+      {
+        "id": 63,
+        "model": "suit1",
+        "texture": "suit1yellow"
+      },
+      {
+        "id": 64,
+        "model": "suit2",
+        "texture": "suit2grn"
+      },
+      {
+        "id": 65,
+        "model": "suit2",
+        "texture": "tuxedo"
+      },
+      {
+        "id": 66,
+        "model": "suit1",
+        "texture": "suit1gang"
+      },
+      {
+        "id": 67,
+        "model": "sleevt",
+        "texture": "letter"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 1,
+    "name": "Hair",
+    "children": [
+      {
+        "id": 0,
+        "model": "head",
+        "texture": "player_face"
+      },
+      {
+        "id": 1,
+        "model": "head",
+        "texture": "hairblond"
+      },
+      {
+        "id": 2,
+        "model": "head",
+        "texture": "hairred"
+      },
+      {
+        "id": 3,
+        "model": "head",
+        "texture": "hairblue"
+      },
+      {
+        "id": 4,
+        "model": "head",
+        "texture": "hairgreen"
+      },
+      {
+        "id": 5,
+        "model": "head",
+        "texture": "hairpink"
+      },
+      {
+        "id": 6,
+        "model": "head",
+        "texture": "bald"
+      },
+      {
+        "id": 7,
+        "model": "head",
+        "texture": "baldbeard"
+      },
+      {
+        "id": 8,
+        "model": "head",
+        "texture": "baldtash"
+      },
+      {
+        "id": 9,
+        "model": "head",
+        "texture": "baldgoatee"
+      },
+      {
+        "id": 10,
+        "model": "head",
+        "texture": "highfade"
+      },
+      {
+        "id": 11,
+        "model": "highafro",
+        "texture": "highafro"
+      },
+      {
+        "id": 12,
+        "model": "wedge",
+        "texture": "wedge"
+      },
+      {
+        "id": 13,
+        "model": "slope",
+        "texture": "slope"
+      },
+      {
+        "id": 14,
+        "model": "jheri",
+        "texture": "jhericurl"
+      },
+      {
+        "id": 15,
+        "model": "cornrows",
+        "texture": "cornrows"
+      },
+      {
+        "id": 16,
+        "model": "cornrows",
+        "texture": "cornrowsb"
+      },
+      {
+        "id": 17,
+        "model": "tramline",
+        "texture": "tramline"
+      },
+      {
+        "id": 18,
+        "model": "groovecut",
+        "texture": "groovecut"
+      },
+      {
+        "id": 19,
+        "model": "mohawk",
+        "texture": "mohawk"
+      },
+      {
+        "id": 20,
+        "model": "mohawk",
+        "texture": "mohawkblond"
+      },
+      {
+        "id": 21,
+        "model": "mohawk",
+        "texture": "mohawkpink"
+      },
+      {
+        "id": 22,
+        "model": "mohawk",
+        "texture": "mohawkbeard"
+      },
+      {
+        "id": 23,
+        "model": "afro",
+        "texture": "afro"
+      },
+      {
+        "id": 24,
+        "model": "afro",
+        "texture": "afrotash"
+      },
+      {
+        "id": 25,
+        "model": "afro",
+        "texture": "afrobeard"
+      },
+      {
+        "id": 26,
+        "model": "afro",
+        "texture": "afroblond"
+      },
+      {
+        "id": 27,
+        "model": "flattop",
+        "texture": "flattop"
+      },
+      {
+        "id": 28,
+        "model": "elvishair",
+        "texture": "elvishair"
+      },
+      {
+        "id": 29,
+        "model": "head",
+        "texture": "beard"
+      },
+      {
+        "id": 30,
+        "model": "head",
+        "texture": "tash"
+      },
+      {
+        "id": 31,
+        "model": "head",
+        "texture": "goatee"
+      },
+      {
+        "id": 32,
+        "model": "afro",
+        "texture": "afrogoatee"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 2,
+    "name": "Legs",
+    "children": [
+      {
+        "id": 0,
+        "model": "legs",
+        "texture": "player_legs"
+      },
+      {
+        "id": 1,
+        "model": "worktr",
+        "texture": "worktrcamogrn"
+      },
+      {
+        "id": 2,
+        "model": "worktr",
+        "texture": "worktrcamogry"
+      },
+      {
+        "id": 3,
+        "model": "worktr",
+        "texture": "worktrgrey"
+      },
+      {
+        "id": 4,
+        "model": "worktr",
+        "texture": "worktrkhaki"
+      },
+      {
+        "id": 5,
+        "model": "tracktr",
+        "texture": "tracktr"
+      },
+      {
+        "id": 6,
+        "model": "tracktr",
+        "texture": "tracktreris"
+      },
+      {
+        "id": 7,
+        "model": "jeans",
+        "texture": "jeansdenim"
+      },
+      {
+        "id": 8,
+        "model": "legs",
+        "texture": "legsblack"
+      },
+      {
+        "id": 9,
+        "model": "legs",
+        "texture": "legsheart"
+      },
+      {
+        "id": 10,
+        "model": "chinosb",
+        "texture": "biegetr"
+      },
+      {
+        "id": 11,
+        "model": "tracktr",
+        "texture": "tracktrpro"
+      },
+      {
+        "id": 12,
+        "model": "tracktr",
+        "texture": "tracktrwhstr"
+      },
+      {
+        "id": 13,
+        "model": "tracktr",
+        "texture": "tracktrblue"
+      },
+      {
+        "id": 14,
+        "model": "tracktr",
+        "texture": "tracktrgang"
+      },
+      {
+        "id": 15,
+        "model": "boxingshort",
+        "texture": "bbshortwht"
+      },
+      {
+        "id": 16,
+        "model": "boxingshort",
+        "texture": "boxshort"
+      },
+      {
+        "id": 17,
+        "model": "boxingshort",
+        "texture": "bbshortred"
+      },
+      {
+        "id": 18,
+        "model": "tracktr",
+        "texture": "shellsuittr"
+      },
+      {
+        "id": 19,
+        "model": "shorts",
+        "texture": "shortsgrey"
+      },
+      {
+        "id": 20,
+        "model": "shorts",
+        "texture": "shortskhaki"
+      },
+      {
+        "id": 21,
+        "model": "chonger",
+        "texture": "chongergrey"
+      },
+      {
+        "id": 22,
+        "model": "chonger",
+        "texture": "chongergang"
+      },
+      {
+        "id": 23,
+        "model": "chonger",
+        "texture": "chongerred"
+      },
+      {
+        "id": 24,
+        "model": "chonger",
+        "texture": "chongerblue"
+      },
+      {
+        "id": 25,
+        "model": "shorts",
+        "texture": "shortsgang"
+      },
+      {
+        "id": 26,
+        "model": "jeans",
+        "texture": "denimsgang"
+      },
+      {
+        "id": 27,
+        "model": "jeans",
+        "texture": "denimsred"
+      },
+      {
+        "id": 28,
+        "model": "chinosb",
+        "texture": "chinosbiege"
+      },
+      {
+        "id": 29,
+        "model": "chinosb",
+        "texture": "chinoskhaki"
+      },
+      {
+        "id": 30,
+        "model": "shorts",
+        "texture": "cutoffchinos"
+      },
+      {
+        "id": 31,
+        "model": "shorts",
+        "texture": "cutoffchinosblue"
+      },
+      {
+        "id": 32,
+        "model": "chinosb",
+        "texture": "chinosblack"
+      },
+      {
+        "id": 33,
+        "model": "chinosb",
+        "texture": "chinosblue"
+      },
+      {
+        "id": 34,
+        "model": "leathertr",
+        "texture": "leathertr"
+      },
+      {
+        "id": 35,
+        "model": "leathertr",
+        "texture": "leathertrchaps"
+      },
+      {
+        "id": 36,
+        "model": "suit1tr",
+        "texture": "suit1trgrey"
+      },
+      {
+        "id": 37,
+        "model": "suit1tr",
+        "texture": "suit1trblk"
+      },
+      {
+        "id": 38,
+        "model": "shorts",
+        "texture": "cutoffdenims"
+      },
+      {
+        "id": 39,
+        "model": "suit1tr",
+        "texture": "suit1trred"
+      },
+      {
+        "id": 40,
+        "model": "suit1tr",
+        "texture": "suit1trblue"
+      },
+      {
+        "id": 41,
+        "model": "suit1tr",
+        "texture": "suit1tryellow"
+      },
+      {
+        "id": 42,
+        "model": "suit1tr",
+        "texture": "suit1trgreen"
+      },
+      {
+        "id": 43,
+        "model": "suit1tr",
+        "texture": "suit1trblk2"
+      },
+      {
+        "id": 44,
+        "model": "suit1tr",
+        "texture": "suit1trgang"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 3,
+    "name": "Shoes",
+    "children": [
+      {
+        "id": 0,
+        "model": "feet",
+        "texture": "foot"
+      },
+      {
+        "id": 1,
+        "model": "biker",
+        "texture": "cowboyboot2"
+      },
+      {
+        "id": 2,
+        "model": "bask1",
+        "texture": "bask2semi"
+      },
+      {
+        "id": 3,
+        "model": "bask1",
+        "texture": "bask1eris"
+      },
+      {
+        "id": 4,
+        "model": "sneaker",
+        "texture": "sneakerbincgang"
+      },
+      {
+        "id": 5,
+        "model": "sneaker",
+        "texture": "sneakerbincblu"
+      },
+      {
+        "id": 6,
+        "model": "sneaker",
+        "texture": "sneakerbincblk"
+      },
+      {
+        "id": 7,
+        "model": "flipflop",
+        "texture": "sandal"
+      },
+      {
+        "id": 8,
+        "model": "flipflop",
+        "texture": "sandalsock"
+      },
+      {
+        "id": 9,
+        "model": "flipflop",
+        "texture": "flipflop"
+      },
+      {
+        "id": 10,
+        "model": "bask1",
+        "texture": "hitop"
+      },
+      {
+        "id": 11,
+        "model": "conv",
+        "texture": "convproblk"
+      },
+      {
+        "id": 12,
+        "model": "conv",
+        "texture": "convproblu"
+      },
+      {
+        "id": 13,
+        "model": "conv",
+        "texture": "convprogrn"
+      },
+      {
+        "id": 14,
+        "model": "sneaker",
+        "texture": "sneakerprored"
+      },
+      {
+        "id": 15,
+        "model": "sneaker",
+        "texture": "sneakerproblu"
+      },
+      {
+        "id": 16,
+        "model": "sneaker",
+        "texture": "sneakerprowht"
+      },
+      {
+        "id": 17,
+        "model": "bask1",
+        "texture": "bask1prowht"
+      },
+      {
+        "id": 18,
+        "model": "bask1",
+        "texture": "bask1problk"
+      },
+      {
+        "id": 19,
+        "model": "biker",
+        "texture": "boxingshoe"
+      },
+      {
+        "id": 20,
+        "model": "conv",
+        "texture": "convheatblk"
+      },
+      {
+        "id": 21,
+        "model": "conv",
+        "texture": "convheatred"
+      },
+      {
+        "id": 22,
+        "model": "conv",
+        "texture": "convheatorn"
+      },
+      {
+        "id": 23,
+        "model": "sneaker",
+        "texture": "sneakerheatwht"
+      },
+      {
+        "id": 24,
+        "model": "sneaker",
+        "texture": "sneakerheatgry"
+      },
+      {
+        "id": 25,
+        "model": "sneaker",
+        "texture": "sneakerheatblk"
+      },
+      {
+        "id": 26,
+        "model": "bask1",
+        "texture": "bask2heatwht"
+      },
+      {
+        "id": 27,
+        "model": "bask1",
+        "texture": "bask2heatband"
+      },
+      {
+        "id": 28,
+        "model": "bask1",
+        "texture": "timbergrey"
+      },
+      {
+        "id": 29,
+        "model": "bask1",
+        "texture": "timberred"
+      },
+      {
+        "id": 30,
+        "model": "bask1",
+        "texture": "timberfawn"
+      },
+      {
+        "id": 31,
+        "model": "bask1",
+        "texture": "timberhike"
+      },
+      {
+        "id": 32,
+        "model": "biker",
+        "texture": "cowboyboot"
+      },
+      {
+        "id": 33,
+        "model": "biker",
+        "texture": "biker"
+      },
+      {
+        "id": 34,
+        "model": "biker",
+        "texture": "snakeskin"
+      },
+      {
+        "id": 35,
+        "model": "shoe",
+        "texture": "shoedressblk"
+      },
+      {
+        "id": 36,
+        "model": "shoe",
+        "texture": "shoedressbrn"
+      },
+      {
+        "id": 37,
+        "model": "shoe",
+        "texture": "shoespatz"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 4,
+    "name": "Left Upper Arm",
+    "children": [
+      {
+        "id": 0,
+        "model": "4WEED",
+        "texture": "4weed"
+      },
+      {
+        "id": 1,
+        "model": "4RIP",
+        "texture": "4rip"
+      },
+      {
+        "id": 2,
+        "model": "4SPIDER",
+        "texture": "4spider"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 5,
+    "name": "Left Lower Arm",
+    "children": [
+      {
+        "id": 0,
+        "model": "5GUN",
+        "texture": "5gun"
+      },
+      {
+        "id": 1,
+        "model": "5CROSS",
+        "texture": "5cross"
+      },
+      {
+        "id": 2,
+        "model": "5CROSS2",
+        "texture": "5cross2"
+      },
+      {
+        "id": 3,
+        "model": "5CROSS3",
+        "texture": "5cross3"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 6,
+    "name": "Right Upper Arm",
+    "children": [
+      {
+        "id": 0,
+        "model": "6AZTEC",
+        "texture": "6aztec"
+      },
+      {
+        "id": 1,
+        "model": "6CROWN",
+        "texture": "6crown"
+      },
+      {
+        "id": 2,
+        "model": "6CLOWN",
+        "texture": "6clown"
+      },
+      {
+        "id": 3,
+        "model": "6AFRICA",
+        "texture": "6africa"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 7,
+    "name": "Right Lower Arm",
+    "children": [
+      {
+        "id": 0,
+        "model": "7CROSS",
+        "texture": "7cross"
+      },
+      {
+        "id": 1,
+        "model": "7CROSS2",
+        "texture": "7cross2"
+      },
+      {
+        "id": 2,
+        "model": "7CROSS3",
+        "texture": "7cross3"
+      },
+      {
+        "id": 3,
+        "model": "7MARY",
+        "texture": "7mary"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 8,
+    "name": "Back Top",
+    "children": [
+      {
+        "id": 0,
+        "model": "8SA",
+        "texture": "8sa"
+      },
+      {
+        "id": 1,
+        "model": "8SA2",
+        "texture": "8sa2"
+      },
+      {
+        "id": 2,
+        "model": "8SA3",
+        "texture": "8sa3"
+      },
+      {
+        "id": 3,
+        "model": "8WESTSD",
+        "texture": "8westside"
+      },
+      {
+        "id": 4,
+        "model": "8SANTOS",
+        "texture": "8santos"
+      },
+      {
+        "id": 5,
+        "model": "8POKER",
+        "texture": "8poker"
+      },
+      {
+        "id": 6,
+        "model": "8GUN",
+        "texture": "8gun"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 9,
+    "name": "Left Chest",
+    "children": [
+      {
+        "id": 0,
+        "model": "9CROWN",
+        "texture": "9crown"
+      },
+      {
+        "id": 1,
+        "model": "9GUN",
+        "texture": "9gun"
+      },
+      {
+        "id": 2,
+        "model": "9GUN2",
+        "texture": "9gun2"
+      },
+      {
+        "id": 3,
+        "model": "9HOMBY",
+        "texture": "9homeboy"
+      },
+      {
+        "id": 4,
+        "model": "9BULLT",
+        "texture": "9bullet"
+      },
+      {
+        "id": 5,
+        "model": "9RASTA",
+        "texture": "9rasta"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 10,
+    "name": "Right Chest",
+    "children": [
+      {
+        "id": 0,
+        "model": "10LS",
+        "texture": "10ls"
+      },
+      {
+        "id": 1,
+        "model": "10LS2",
+        "texture": "10ls2"
+      },
+      {
+        "id": 2,
+        "model": "10LS3",
+        "texture": "10ls3"
+      },
+      {
+        "id": 3,
+        "model": "10LS4",
+        "texture": "10ls4"
+      },
+      {
+        "id": 4,
+        "model": "10LS5",
+        "texture": "10ls5"
+      },
+      {
+        "id": 5,
+        "model": "10OG",
+        "texture": "10og"
+      },
+      {
+        "id": 6,
+        "model": "10WEED",
+        "texture": "10weed"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 11,
+    "name": "Stomach",
+    "children": [
+      {
+        "id": 0,
+        "model": "11GROVE",
+        "texture": "11grove"
+      },
+      {
+        "id": 1,
+        "model": "11GROV2",
+        "texture": "11grove2"
+      },
+      {
+        "id": 2,
+        "model": "11GROV3",
+        "texture": "11grove3"
+      },
+      {
+        "id": 3,
+        "model": "11DICE",
+        "texture": "11dice"
+      },
+      {
+        "id": 4,
+        "model": "11DICE2",
+        "texture": "11dice2"
+      },
+      {
+        "id": 5,
+        "model": "11JAIL",
+        "texture": "11jail"
+      },
+      {
+        "id": 6,
+        "model": "11GGIFT",
+        "texture": "11godsgift"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 12,
+    "name": "Lower Back",
+    "children": [
+      {
+        "id": 0,
+        "model": "12ANGEL",
+        "texture": "12angels"
+      },
+      {
+        "id": 1,
+        "model": "12MAYBR",
+        "texture": "12mayabird"
+      },
+      {
+        "id": 2,
+        "model": "12DAGER",
+        "texture": "12dagger"
+      },
+      {
+        "id": 3,
+        "model": "12BNDIT",
+        "texture": "12bandit"
+      },
+      {
+        "id": 4,
+        "model": "12CROSS",
+        "texture": "12cross7"
+      },
+      {
+        "id": 5,
+        "model": "12MYFAC",
+        "texture": "12mayaface"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 13,
+    "name": "Extra1",
+    "children": [
+      {
+        "id": 0,
+        "model": "neck",
+        "texture": "dogtag"
+      },
+      {
+        "id": 1,
+        "model": "neck",
+        "texture": "neckafrica"
+      },
+      {
+        "id": 2,
+        "model": "neck",
+        "texture": "stopwatch"
+      },
+      {
+        "id": 3,
+        "model": "neck",
+        "texture": "necksaints"
+      },
+      {
+        "id": 4,
+        "model": "neck",
+        "texture": "neckhash"
+      },
+      {
+        "id": 5,
+        "model": "neck2",
+        "texture": "necksilver"
+      },
+      {
+        "id": 6,
+        "model": "neck2",
+        "texture": "neckgold"
+      },
+      {
+        "id": 7,
+        "model": "neck2",
+        "texture": "neckropes"
+      },
+      {
+        "id": 8,
+        "model": "neck2",
+        "texture": "neckropeg"
+      },
+      {
+        "id": 9,
+        "model": "neck",
+        "texture": "neckls"
+      },
+      {
+        "id": 10,
+        "model": "neck",
+        "texture": "neckdollar"
+      },
+      {
+        "id": 11,
+        "model": "neck",
+        "texture": "neckcross"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 14,
+    "name": "Extra2",
+    "children": [
+      {
+        "id": 0,
+        "model": "watch",
+        "texture": "watchpink"
+      },
+      {
+        "id": 1,
+        "model": "watch",
+        "texture": "watchyellow"
+      },
+      {
+        "id": 2,
+        "model": "watch",
+        "texture": "watchpro"
+      },
+      {
+        "id": 3,
+        "model": "watch",
+        "texture": "watchpro2"
+      },
+      {
+        "id": 4,
+        "model": "watch",
+        "texture": "watchsub1"
+      },
+      {
+        "id": 5,
+        "model": "watch",
+        "texture": "watchsub2"
+      },
+      {
+        "id": 6,
+        "model": "watch",
+        "texture": "watchzip1"
+      },
+      {
+        "id": 7,
+        "model": "watch",
+        "texture": "watchzip2"
+      },
+      {
+        "id": 8,
+        "model": "watch",
+        "texture": "watchgno"
+      },
+      {
+        "id": 9,
+        "model": "watch",
+        "texture": "watchgno2"
+      },
+      {
+        "id": 10,
+        "model": "watch",
+        "texture": "watchcro"
+      },
+      {
+        "id": 11,
+        "model": "watch",
+        "texture": "watchcro2"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 15,
+    "name": "Extra3",
+    "children": [
+      {
+        "id": 0,
+        "model": "grouchos",
+        "texture": "groucho"
+      },
+      {
+        "id": 1,
+        "model": "zorromask",
+        "texture": "zorro"
+      },
+      {
+        "id": 2,
+        "model": "eyepatch",
+        "texture": "eyepatch"
+      },
+      {
+        "id": 3,
+        "model": "glasses01",
+        "texture": "glasses01"
+      },
+      {
+        "id": 4,
+        "model": "glasses04",
+        "texture": "glasses04"
+      },
+      {
+        "id": 5,
+        "model": "bandmask",
+        "texture": "bandred3"
+      },
+      {
+        "id": 6,
+        "model": "bandmask",
+        "texture": "bandblue3"
+      },
+      {
+        "id": 7,
+        "model": "bandmask",
+        "texture": "bandgang3"
+      },
+      {
+        "id": 8,
+        "model": "bandmask",
+        "texture": "bandblack3"
+      },
+      {
+        "id": 9,
+        "model": "glasses01",
+        "texture": "glasses01dark"
+      },
+      {
+        "id": 10,
+        "model": "glasses04",
+        "texture": "glasses04dark"
+      },
+      {
+        "id": 11,
+        "model": "glasses03",
+        "texture": "glasses03"
+      },
+      {
+        "id": 12,
+        "model": "glasses03",
+        "texture": "glasses03red"
+      },
+      {
+        "id": 13,
+        "model": "glasses03",
+        "texture": "glasses03blue"
+      },
+      {
+        "id": 14,
+        "model": "glasses03",
+        "texture": "glasses03dark"
+      },
+      {
+        "id": 15,
+        "model": "glasses03",
+        "texture": "glasses05dark"
+      },
+      {
+        "id": 16,
+        "model": "glasses03",
+        "texture": "glasses05"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 16,
+    "name": "Extra4",
+    "children": [
+      {
+        "id": 0,
+        "model": "bandana",
+        "texture": "bandred"
+      },
+      {
+        "id": 1,
+        "model": "bandana",
+        "texture": "bandblue"
+      },
+      {
+        "id": 2,
+        "model": "bandana",
+        "texture": "bandgang"
+      },
+      {
+        "id": 3,
+        "model": "bandana",
+        "texture": "bandblack"
+      },
+      {
+        "id": 4,
+        "model": "bandknots",
+        "texture": "bandred2"
+      },
+      {
+        "id": 5,
+        "model": "bandknots",
+        "texture": "bandblue2"
+      },
+      {
+        "id": 6,
+        "model": "bandknots",
+        "texture": "bandblack2"
+      },
+      {
+        "id": 7,
+        "model": "bandknots",
+        "texture": "bandgang2"
+      },
+      {
+        "id": 8,
+        "model": "capknit",
+        "texture": "capknitgrn"
+      },
+      {
+        "id": 9,
+        "model": "captruck",
+        "texture": "captruck"
+      },
+      {
+        "id": 10,
+        "model": "cowboy",
+        "texture": "cowboy"
+      },
+      {
+        "id": 11,
+        "model": "cowboy",
+        "texture": "hattiger"
+      },
+      {
+        "id": 12,
+        "model": "helmet",
+        "texture": "helmet"
+      },
+      {
+        "id": 13,
+        "model": "moto",
+        "texture": "moto"
+      },
+      {
+        "id": 14,
+        "model": "boxingcap",
+        "texture": "boxingcap"
+      },
+      {
+        "id": 15,
+        "model": "hockeymask",
+        "texture": "hockey"
+      },
+      {
+        "id": 16,
+        "model": "cap",
+        "texture": "capgang"
+      },
+      {
+        "id": 17,
+        "model": "capback",
+        "texture": "capgangback"
+      },
+      {
+        "id": 18,
+        "model": "capside",
+        "texture": "capgangside"
+      },
+      {
+        "id": 19,
+        "model": "capovereye",
+        "texture": "capgangover"
+      },
+      {
+        "id": 20,
+        "model": "caprimup",
+        "texture": "capgangup"
+      },
+      {
+        "id": 21,
+        "model": "bikerhelmet",
+        "texture": "bikerhelmet"
+      },
+      {
+        "id": 22,
+        "model": "cap",
+        "texture": "capred"
+      },
+      {
+        "id": 23,
+        "model": "capback",
+        "texture": "capredback"
+      },
+      {
+        "id": 24,
+        "model": "capside",
+        "texture": "capredside"
+      },
+      {
+        "id": 25,
+        "model": "capovereye",
+        "texture": "capredover"
+      },
+      {
+        "id": 26,
+        "model": "caprimup",
+        "texture": "capredup"
+      },
+      {
+        "id": 27,
+        "model": "cap",
+        "texture": "capblue"
+      },
+      {
+        "id": 28,
+        "model": "capback",
+        "texture": "capblueback"
+      },
+      {
+        "id": 29,
+        "model": "capside",
+        "texture": "capblueside"
+      },
+      {
+        "id": 30,
+        "model": "capovereye",
+        "texture": "capblueover"
+      },
+      {
+        "id": 31,
+        "model": "caprimup",
+        "texture": "capblueup"
+      },
+      {
+        "id": 32,
+        "model": "skullycap",
+        "texture": "skullyblk"
+      },
+      {
+        "id": 33,
+        "model": "skullycap",
+        "texture": "skullygrn"
+      },
+      {
+        "id": 34,
+        "model": "hatmanc",
+        "texture": "hatmancblk"
+      },
+      {
+        "id": 35,
+        "model": "hatmanc",
+        "texture": "hatmancplaid"
+      },
+      {
+        "id": 36,
+        "model": "cap",
+        "texture": "capzip"
+      },
+      {
+        "id": 37,
+        "model": "capback",
+        "texture": "capzipback"
+      },
+      {
+        "id": 38,
+        "model": "capside",
+        "texture": "capzipside"
+      },
+      {
+        "id": 39,
+        "model": "capovereye",
+        "texture": "capzipover"
+      },
+      {
+        "id": 40,
+        "model": "caprimup",
+        "texture": "capzipup"
+      },
+      {
+        "id": 41,
+        "model": "beret",
+        "texture": "beretred"
+      },
+      {
+        "id": 42,
+        "model": "beret",
+        "texture": "beretblk"
+      },
+      {
+        "id": 43,
+        "model": "cap",
+        "texture": "capblk"
+      },
+      {
+        "id": 44,
+        "model": "capback",
+        "texture": "capblkback"
+      },
+      {
+        "id": 45,
+        "model": "capside",
+        "texture": "capblkside"
+      },
+      {
+        "id": 46,
+        "model": "capovereye",
+        "texture": "capblkover"
+      },
+      {
+        "id": 47,
+        "model": "caprimup",
+        "texture": "capblkup"
+      },
+      {
+        "id": 48,
+        "model": "trilby",
+        "texture": "trilbydrk"
+      },
+      {
+        "id": 49,
+        "model": "trilby",
+        "texture": "trilbylght"
+      },
+      {
+        "id": 50,
+        "model": "bowler",
+        "texture": "bowler"
+      },
+      {
+        "id": 51,
+        "model": "bowler",
+        "texture": "bowlerred"
+      },
+      {
+        "id": 52,
+        "model": "bowler",
+        "texture": "bowlerblue"
+      },
+      {
+        "id": 53,
+        "model": "bowler",
+        "texture": "bowleryellow"
+      },
+      {
+        "id": 54,
+        "model": "boater",
+        "texture": "boater"
+      },
+      {
+        "id": 55,
+        "model": "bowler",
+        "texture": "bowlergang"
+      },
+      {
+        "id": 56,
+        "model": "boater",
+        "texture": "boaterblk"
+      }
+    ]
+  },
+  {
+    "1": "group",
+    "type": 17,
+    "name": "Suit",
+    "children": [
+      {
+        "id": 0,
+        "model": "gimpleg",
+        "texture": "gimpleg"
+      },
+      {
+        "id": 1,
+        "model": "valet",
+        "texture": "valet"
+      },
+      {
+        "id": 2,
+        "model": "countrytr",
+        "texture": "countrytr"
+      },
+      {
+        "id": 3,
+        "model": "valet",
+        "texture": "croupier"
+      },
+      {
+        "id": 4,
+        "model": "policetr",
+        "texture": "policetr"
+      },
+      {
+        "id": 5,
+        "model": "balaclava",
+        "texture": "balaclava"
+      },
+      {
+        "id": 6,
+        "model": "pimptr",
+        "texture": "pimptr"
+      },
+      {
+        "id": 7,
+        "model": "garagetr",
+        "texture": "garageleg"
+      },
+      {
+        "id": 8,
+        "model": "medictr",
+        "texture": "medictr"
+      }
+    ]
+  }
+]
