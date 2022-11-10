@@ -63,6 +63,10 @@ public class MatchService
         }
 
         match.AddPlayer(player);
+
+        foreach (var matchPlayer in match.Players)
+            matchPlayer.SendMatch(player.Match!);
+
         this.logger.LogInformation("{player} joined match \"{match}\" ({id})", player.Name, match.Name, match.Id);
     }
 
@@ -76,6 +80,9 @@ public class MatchService
 
         match.RemovePlayer(player);
         player.SendMatches(this.matches);
+
+        foreach (var matchPlayer in match.Players)
+            matchPlayer.SendMatch(player.Match!);
     }
 
     public void StartMatch(TdmPlayer player, Match match)
@@ -95,11 +102,11 @@ public class MatchService
 
         if (player.Match == match && player.Match.Host == player)
         {
-            player.Match.SetMap(map);
+            match.SetMap(map);
             this.logger.LogInformation("{player} set the map to \"{map}\" for match \"{match}\" ({id})", player.Name, mapName, player.Match.Name, player.Match.Id);
 
-            foreach (var matchPlayer in player.Match.Players)
-                matchPlayer.SendMatch(player.Match);
+            foreach (var matchPlayer in match.Players)
+                matchPlayer.SendMatch(match);
         }
         else
             player.SendErrorMessage("You can not set the map for this match");

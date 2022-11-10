@@ -16,7 +16,7 @@ local function handleRegisterClick()
 end
 
 function createLoginUi()
-    ui.window = guiCreateWindow(centerX - 200, centerY - 150, 300, 350, "Slipe Team Deathmatch : Login")
+    ui.window = guiCreateWindow(centerX - 200, centerY - 150, 300, 350, "Slipe Team Deathmatch : Login", false)
     ui.tabPanel = guiCreateTabPanel(25, 25, 250, 300, false, ui.window)
 
     ui.loginTab = guiCreateTab("Login", ui.tabPanel)

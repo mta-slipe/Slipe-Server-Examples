@@ -1,4 +1,5 @@
 ﻿using SlipeServer.Server.Events;
+using SlipeServer.Server.Repositories;
 using SlipeServer.Server.Services;
 using SlipeTeamDeathmatch.Elements;
 using SlipeTeamDeathmatch.LuaValues;
@@ -11,15 +12,18 @@ public class MatchLogic
     private readonly LuaEventService luaEventService;
     private readonly MapService mapService;
     private readonly MatchService matchService;
+    private readonly IElementRepository elementRepository;
 
     public MatchLogic(
         LuaEventService luaEventService,
         MapService mapProvider,
-        MatchService matchService)
+        MatchService matchService,
+        IElementRepository elementRepository)
     {
         this.luaEventService = luaEventService;
         this.mapService = mapProvider;
         this.matchService = matchService;
+        this.elementRepository = elementRepository;
 
         this.luaEventService.AddEventHandler("Slipe.TeamDeathMatch.RequestMatches", HandleRequestMatches);
         this.luaEventService.AddEventHandler("Slipe.TeamDeathMatch.RequestMaps", HandleRequestMaps);
@@ -47,6 +51,10 @@ public class MatchLogic
         luaValue.Parse(luaEvent.Parameters[0]);
 
         this.matchService.CreateMatch(player, luaValue.Name);
+
+        var playersWithoutMatches = this.elementRepository.GetByType<TdmPlayer>().Where(x => x.Match == null);
+        foreach (var playerWithoutMatch in playersWithoutMatches)
+            playerWithoutMatch.SendMatches(this.matchService.Matches);
     }
 
     private void HandleJoinRequest(LuaEvent luaEvent)
