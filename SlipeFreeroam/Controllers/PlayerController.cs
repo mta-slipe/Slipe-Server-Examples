@@ -4,6 +4,8 @@ using SlipeServer.LuaControllers;
 using SlipeServer.LuaControllers.Attributes;
 using SlipeServer.Packets.Enums;
 using SlipeServer.Server;
+using SlipeServer.Server.ElementCollections;
+using SlipeServer.Server.Elements;
 using SlipeServer.Server.Elements.Enums;
 using SlipeServer.Server.Enums;
 
@@ -14,11 +16,13 @@ public class PlayerController : BaseLuaController<FreeroamPlayer>
 {
     private readonly MtaServer server;
     private readonly ClothingService clothingService;
+    private readonly IElementCollection elementCollection;
 
-    public PlayerController(MtaServer server, ClothingService clothingService)
+    public PlayerController(MtaServer server, ClothingService clothingService, IElementCollection elementCollection)
     {
         this.server = server;
         this.clothingService = clothingService;
+        this.elementCollection = elementCollection;
     }
 
     [LuaEvent("onFreeroamSuicide")]
@@ -30,7 +34,7 @@ public class PlayerController : BaseLuaController<FreeroamPlayer>
     [LuaEvent("onPlayerGravInit")]
     public void HandleGravInit()
     {
-        //Context.Player.TriggerLuaEvent("onClientPlayerGravInit", Context.Player, Context.Player.Gravity);
+        Context.Player.TriggerLuaEvent("onClientPlayerGravInit", Context.Player, Context.Player.Gravity);
     }
 
     [LuaEvent("givePedJetPack")]
@@ -42,7 +46,10 @@ public class PlayerController : BaseLuaController<FreeroamPlayer>
     [LuaEvent("onFreeroamLocalSettingChange")]
     public void HandleSettingChange(string setting, bool value)
     {
+        this.Context.Player.PersonalSettings[setting] = value;
 
+        foreach (var player in this.elementCollection.GetByType<FreeroamPlayer>())
+            player.SendSetting(this.Context.Player, setting, value);
     }
 
     [LuaEvent("setMySkin")]
@@ -130,6 +137,12 @@ public class PlayerController : BaseLuaController<FreeroamPlayer>
     public void SetFightingStyle(FreeroamPlayer player, FightingStyle fightingStyle)
     {
         player.FightingStyle = fightingStyle;
+    }
+
+    [LuaEvent("setPedGravity")]
+    public void SetGravity(Ped ped, float gravity)
+    {
+        ped.Gravity = gravity;
     }
 }
 

@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Numerics;
 using SlipeFreeroam.Elements;
+using SlipeFreeroam.Services;
 using SlipeServer.LuaControllers;
 using SlipeServer.LuaControllers.Attributes;
 using SlipeServer.Packets.Lua.Camera;
@@ -13,10 +14,12 @@ namespace SlipeFreeroam.Controllers;
 public class VehicleController : BaseLuaController<FreeroamPlayer>
 {
     private readonly MtaServer server;
+    private readonly VehicleUpgradeService vehicleUpgradeService;
 
-    public VehicleController(MtaServer server)
+    public VehicleController(MtaServer server, VehicleUpgradeService vehicleUpgradeService)
     {
         this.server = server;
+        this.vehicleUpgradeService = vehicleUpgradeService;
     }
 
     [LuaEvent("giveMeVehicles")]
@@ -55,18 +58,6 @@ public class VehicleController : BaseLuaController<FreeroamPlayer>
         vehicle.HeadlightColor = Color.FromArgb(255, r, g, b);
     }
 
-    [LuaEvent("addVehicleUpgrade")]
-    public void AddUpgrade(FreeroamVehicle vehicle, int upgrade)
-    {
-
-    }
-
-    [LuaEvent("removeVehicleUpgrade")]
-    public void RemoveUpgrade(FreeroamVehicle vehicle, int upgrade)
-    {
-
-    }
-
     [LuaEvent("fixVehicle")]
     public void FixVehicle(FreeroamVehicle vehicle)
     {
@@ -92,7 +83,31 @@ public class VehicleController : BaseLuaController<FreeroamPlayer>
     {
         var seat = vehicle.GetFreePassengerSeat();
         if (seat != null)
-            this.Context.Player.WarpIntoVehicle(vehicle, seat.Value);
+        {
+            var player = this.Context.Player;
+            if (!player.IsAlive)
+                player.Spawn(vehicle.Position + Vector3.UnitZ, player.PedRotation, player.Model, player.Interior, player.Dimension);
+
+            player.WarpIntoVehicle(vehicle, seat.Value);
+        }
+    }
+
+    [LuaEvent("setVehicleOverrideLights")]
+    public void SetOverrideLights(Vehicle vehicle, int lights)
+    {
+        vehicle.OverrideLights = (VehicleOverrideLights)lights;
+    }
+
+    [LuaEvent("addVehicleUpgrade")]
+    public void AddUpgrade(FreeroamVehicle vehicle, int upgrade)
+    {
+        this.vehicleUpgradeService.ApplyUpgrade(vehicle, upgrade);
+    }
+
+    [LuaEvent("removeVehicleUpgrade")]
+    public void RemoveUpgrade(FreeroamVehicle vehicle, int upgrade)
+    {
+        this.vehicleUpgradeService.RemoveUpgrade(vehicle, upgrade);
     }
 }
 

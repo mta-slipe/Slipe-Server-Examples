@@ -20,6 +20,7 @@ public class FreeroamPlayer : Player
 
     public DateTime LastMessageTime { get; set; }
     public string LastMessage { get; set; } = "";
+    public Dictionary<string, bool> PersonalSettings { get; set; }
 
     public FreeroamPlayer(
         MtaServer<FreeroamPlayer> server,
@@ -31,6 +32,7 @@ public class FreeroamPlayer : Player
         this.resource = resourceProvider.GetResource("freeroam");
 
         this.Vehicles = new();
+        this.PersonalSettings = new();
         this.Blip = new Blip(this.position, BlipIcon.Marker).AssociateWith(server);
         this.Blip.AttachTo(this);
 
@@ -57,9 +59,9 @@ public class FreeroamPlayer : Player
         this.luaEventService.TriggerEventFor(this, "onClientClothesInit", this.resource.DynamicRoot, clothingData);
     }
 
-    public void SendSetting(string setting, LuaValue value)
+    public void SendSetting(FreeroamPlayer player, string setting, bool value)
     {
-        this.luaEventService.TriggerEventFor(this, "onClientFreeroamLocalSettingChange", this.resource.DynamicRoot, setting, value);
+        this.luaEventService.TriggerEventFor(this, "onClientFreeroamLocalSettingChange", player, setting, value);
     }
 
     public void SendGlobalSettings(FreeroamClientSettings settings)

@@ -25,6 +25,7 @@ var server = MtaServer.CreateWithDiSupport<FreeroamPlayer>(builder =>
     builder.ConfigureServices(services =>
     {
         services.AddSingleton<ClothingService>();
+        services.AddSingleton<VehicleUpgradeService>();
         services.AddSingleton<FreeroamClientSettings>();
         services.AddSingleton<ILogger, ConsoleLogger>();
     });

@@ -27,28 +27,28 @@ g_Trailers = {
 
 g_RPCFunctions = {
 	--[[DONE]]addPedClothes = { option = 'clothes', descr = 'Modifying clothes' },
-	addVehicleUpgrade = { option = 'upgrades', descr = 'Adding/removing upgrades' },
+	--[[DONE]]addVehicleUpgrade = { option = 'upgrades', descr = 'Adding/removing upgrades' },
 	--[[DONE]]fadeVehiclePassengersCamera = true,
 	--[[DONE]]fixVehicle = { option = 'repair', descr = 'Repairing vehicles' },
 	--[[DONE]]giveMeVehicles = { option = 'createvehicle', descr = 'Creating vehicles' },
 	--[[DONE]]giveMeWeapon = { option = 'weapons.enabled', descr = 'Getting weapons' },
 	--[[DONE]]givePedJetPack = { option = 'jetpack', descr = 'Getting a jetpack' },
 	--[[DONE]]removePedClothes = { option = 'clothes', descr = 'Modifying clothes' },
-	removePedFromVehicle = true,
+	--[[Seems unused?]]removePedFromVehicle = true,
 	--[[DONE]]removePedJetPack = { option = 'jetpack', descr = 'Removing a jetpack' },
-	removeVehicleUpgrade = { option = 'upgrades', descr = 'Adding/removing upgrades' },
+	--[[DONE]]removeVehicleUpgrade = { option = 'upgrades', descr = 'Adding/removing upgrades' },
 	--[[DONE]]setElementAlpha = { option = 'alpha', descr = 'Changing your alpha' },
 	--[[DONE]]setElementInterior = true,
 	--[[DONE]]setMySkin = { option = 'setskin', descr = 'Setting skin' },
 	--[[DONE]]setPedAnimation = { option = 'anim', descr = 'Setting an animation' },
 	--[[DONE]]setPedFightingStyle = { option = 'setstyle', descr = 'Setting fighting style' },
-	setPedGravity = { option = 'gravity.enabled', descr = 'Setting gravity' },
+	--[[DONE]]setPedGravity = { option = 'gravity.enabled', descr = 'Setting gravity' },
 	--[[DONE]]setPedStat = { option = 'stats', descr = 'Changing stats' },
 	--[[DONE]]setVehicleColor = true,
 	--[[DONE]]setVehicleHeadLightColor = true,
-	setVehicleOverrideLights = { option = 'lights', descr = 'Forcing lights' },
+	--[[DONE]]setVehicleOverrideLights = { option = 'lights', descr = 'Forcing lights' },
 	--[[DONE]]setVehiclePaintjob = { option = 'paintjob', descr = 'Applying paintjobs' },
-	warpMeIntoVehicle = true,
+	--[[DONE]]warpMeIntoVehicle = true,
 }
 
 g_OptionDefaults = {
@@ -190,7 +190,7 @@ end
 -- requests settings
 -- DONE
 -- sends settings from other clients
--- TODO
+-- DONE
 addEvent('onLoadedAtClient', true)
 addEventHandler('onLoadedAtClient', resourceRoot,
 	function()
@@ -280,7 +280,7 @@ addEventHandler('onClothesInit', resourceRoot,
 )
 
 -- sends player gravity
--- TODO
+-- DONE
 addEvent('onPlayerGravInit', true)
 addEventHandler('onPlayerGravInit', root,
 	function()
@@ -329,7 +329,7 @@ function spawnMe(x, y, z)
 	setCameraInterior(source, getElementInterior(source))
 end
 
--- TODO
+-- DONE
 function warpMeIntoVehicle(vehicle)
 
 	if not isElement(vehicle) then return end
@@ -426,7 +426,7 @@ end
 
 _setPlayerGravity = setPedGravity
 -- sets player gravity
--- TODO
+-- DONE
 function setPedGravity(player, grav)
 	if grav < getOption('gravity.min') then
 		errMsg(('Minimum allowed gravity is %.5f'):format(getOption('gravity.min')), player)

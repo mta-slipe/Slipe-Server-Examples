@@ -2277,6 +2277,7 @@ end
 
 function joinHandler(player)
 	if (not g_PlayerData) then return end
+	iprint(player)
 	g_PlayerData[player or source] = { name = getPlayerName(player or source), gui = {} }
 end
 addEventHandler('onClientPlayerJoin', root, joinHandler)
