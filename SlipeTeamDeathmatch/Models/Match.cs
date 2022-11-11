@@ -69,6 +69,8 @@ public class Match
 
         if (!this.players.Any())
             this.Abandoned?.Invoke(this, new());
+        else if (player == this.Host)
+            this.Host = this.players.First();
     }
 
     public void SetMap(Map? map)
@@ -96,7 +98,10 @@ public class Match
         this.Started?.Invoke(this, EventArgs.Empty);
 
         foreach (var player in this.players)
+        {
             player.Team = this.Map!.Teams.OrderBy(x => x.Players.Count).First();
+            player.ApplyMaxStats();
+        }
 
         foreach (var team in this.Map!.Teams)
         {
@@ -172,6 +177,9 @@ public class Match
 
     private void CheckForWin()
     {
+        if (this.State != MatchState.InProgress)
+            return;
+
         var livingPlayers = this.players.Where(x => x.IsAlive && x.Team != null);
         if (!livingPlayers.Any())
         {

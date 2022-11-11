@@ -1,5 +1,6 @@
 ﻿using SlipeServer.Packets.Definitions.Lua;
 using SlipeServer.Server.Elements;
+using SlipeServer.Server.Enums;
 using SlipeTeamDeathmatch.Models;
 
 namespace SlipeTeamDeathmatch.Elements;
@@ -51,6 +52,12 @@ public class TdmPlayer : Player
     public void SendLoggedOut()
     {
         TriggerLuaEvent("Slipe.TeamDeathMatch.LoggedOut");
+    }
+
+    public void ApplyMaxStats()
+    {
+        foreach (var weapon in Enum.GetValues<WeaponId>())
+            this.SetWeaponStat(weapon, 1000);
     }
 
     public LuaValue GetLuaValue()

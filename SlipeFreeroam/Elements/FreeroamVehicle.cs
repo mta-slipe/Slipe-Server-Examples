@@ -33,7 +33,7 @@ public class FreeroamVehicle : Vehicle
 
     private void HandleLeft(Element sender, VehicleLeftEventArgs e)
     {
-        if (this.Occupants.Count == 0)
+        if (this.Occupants.Count == 0 && !this.IsDestroyed)
         {
             this.idleTimer.Start();
         }
@@ -42,7 +42,9 @@ public class FreeroamVehicle : Vehicle
     private void HandleIdleTimerElapse(object? sender, System.Timers.ElapsedEventArgs e)
     {
         this.Health = 0;
-        this.destructionTimer.Start();
+
+        if (!this.IsDestroyed)
+            this.destructionTimer.Start();
     }
 
     private void HandleDestructionTimerElapse(object? sender, System.Timers.ElapsedEventArgs e)
@@ -52,7 +54,8 @@ public class FreeroamVehicle : Vehicle
 
     private void HandleBlown(Element sender)
     {
-        this.destructionTimer.Start();
+        if (!this.IsDestroyed)
+            this.destructionTimer.Start();
     }
 
     private void HandleDestroy(Element obj)

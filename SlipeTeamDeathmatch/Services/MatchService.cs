@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using SlipeServer.Server.ElementCollections;
 using SlipeTeamDeathmatch.Elements;
 using SlipeTeamDeathmatch.Models;
 
@@ -8,16 +9,19 @@ public class MatchService
     private int matchId;
     private readonly ILogger logger;
     private readonly MapService mapService;
-
+    private readonly IElementCollection elementCollection;
     private readonly List<Match> matches;
     public IReadOnlyCollection<Match> Matches => this.matches.AsReadOnly();
 
     public MatchService(
         ILogger logger,
-        MapService mapProvider)
+        MapService mapProvider,
+        IElementCollection elementCollection
+    )
     {
         this.logger = logger;
         this.mapService = mapProvider;
+        this.elementCollection = elementCollection;
 
         this.matches = new();
     }
@@ -47,11 +51,14 @@ public class MatchService
         {
             this.matches.Remove(match);
             this.logger.LogInformation("Match \"{match}\" was abandoned", match.Name);
+            UpdateMatchlessPlayers();
         };
 
         player.SendMatch(match);
 
         this.logger.LogInformation("{player} created match \"{match}\" ({id})", player.Name, match.Name, match.Id);
+
+        UpdateMatchlessPlayers();
     }
 
     public void AddPlayerToMatch(TdmPlayer player, Match match)
@@ -82,12 +89,16 @@ public class MatchService
         player.SendMatches(this.matches);
 
         foreach (var matchPlayer in match.Players)
-            matchPlayer.SendMatch(player.Match!);
+            matchPlayer.SendMatch(match);
     }
 
     public void StartMatch(TdmPlayer player, Match match)
     {
-        if (match != null && match.Host == player && match.CanStart)
+        if (match.Map == null)
+        {
+            player.SendErrorMessage("You have to select a map first.");
+        }
+        else if (match != null && match.Host == player && match.CanStart)
         {
             match.Start();
             this.logger.LogInformation("{player} started the match \"{match}\" ({id})", player.Name, match.Name, match.Id);
@@ -110,5 +121,11 @@ public class MatchService
         }
         else
             player.SendErrorMessage("You can not set the map for this match");
+    }
+
+    private void UpdateMatchlessPlayers()
+    {
+        foreach (var matchlessPlayer in this.elementCollection.GetByType<TdmPlayer>().Where(x => x.Match == null))
+            matchlessPlayer.SendMatches(this.Matches);
     }
 }
