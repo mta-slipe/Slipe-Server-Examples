@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SlipeServer.LuaControllers;
+using SlipeServer.Resources.Reload;
 using SlipeServer.Server;
 using SlipeServer.Server.ElementCollections;
 using SlipeServer.Server.Elements;
@@ -30,6 +31,8 @@ var server = MtaServer.Create<TdmPlayer>(builder =>
 
     builder.AddLogic<TdmResourceLogic>();
     builder.AddLogic<ChatLogic>();
+
+    builder.AddReloadResource();
 
     builder.ConfigureServices(services =>
     {
