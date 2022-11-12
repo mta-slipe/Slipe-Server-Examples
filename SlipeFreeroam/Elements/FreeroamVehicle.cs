@@ -19,7 +19,7 @@ public class FreeroamVehicle : Vehicle
         this.destructionTimer = new(15000);
         this.destructionTimer.Elapsed += HandleDestructionTimerElapse;
 
-        this.idleTimer = new(30000);
+        this.idleTimer = new(300000);
         this.idleTimer.Elapsed += HandleIdleTimerElapse;
 
         this.Destroyed += HandleDestroy;

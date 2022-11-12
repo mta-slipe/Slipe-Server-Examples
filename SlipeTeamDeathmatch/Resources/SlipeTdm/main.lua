@@ -1,5 +1,4 @@
 ﻿function init()
-	outputChatBox("Hello TDM!")
 	createLoginUi()
 	createMatchesUi()
 	createMatchUi()

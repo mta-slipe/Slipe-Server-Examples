@@ -69,6 +69,12 @@ public class MatchService
             return;
         }
 
+        if (match.State != MatchState.Lobby)
+        {
+            player.SendErrorMessage("You can not join this match as it is already in progress.");
+            return;
+        }
+
         match.AddPlayer(player);
 
         foreach (var matchPlayer in match.Players)

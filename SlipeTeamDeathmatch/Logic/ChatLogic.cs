@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using SlipeServer.Packets.Enums;
 using SlipeServer.Server.Events;
+using SlipeServer.Server.Extensions;
 using SlipeServer.Server.Services;
 using SlipeTeamDeathmatch.Elements;
 
@@ -31,7 +32,7 @@ public class ChatLogic
 
         var color = player.Team?.Color ?? Color.White;
         var colorCode = $"#{color.R:X2}{color.G:X2}{color.B:X2}";
-        string prefix = $"#aaaaaa(GLOBAL) {colorCode}{player.Name}:#ffffff";
+        string prefix = $"#aaaaaa(GLOBAL) {colorCode}{player.Name.StripColorCode()}:#ffffff";
         string fullMessage = $"{prefix} {message}";
 
         this.chatBox.Output(fullMessage, Color.White, true, ChatEchoType.Player, player);
@@ -50,7 +51,7 @@ public class ChatLogic
 
         var color = player.Team.Color;
         var colorCode = $"#{color.R:X2}{color.G:X2}{color.B:X2}";
-        string prefix = $"{colorCode}(TEAM)#aaaaaa {player.Name}:#ffffff";
+        string prefix = $"{colorCode}(TEAM)#aaaaaa {player.Name.StripColorCode()}:#ffffff";
         string fullMessage = $"{prefix} {message}";
 
         foreach (var teamPlayer in player.Team.Players)
@@ -71,7 +72,7 @@ public class ChatLogic
 
         var color = player.Team?.Color ?? Color.White;
         var colorCode = $"#{color.R:X2}{color.G:X2}{color.B:X2}";
-        string prefix = $"{colorCode}{player.Name}:#ffffff";
+        string prefix = $"{colorCode}{player.Name.StripColorCode()}:#ffffff";
         string fullMessage = $"{prefix} {message}";
 
         foreach (var teamPlayer in player.Match.Players)
