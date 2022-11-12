@@ -24,11 +24,12 @@ Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetEntryAssembly()!
 var server = MtaServer.Create<TdmPlayer>(builder =>
 {
     builder.UseConfiguration(TdmConfiguration.Config);
-    builder.AddDefaults();
+    builder.AddDefaults(exceptBehaviours: ServerBuilderDefaultBehaviours.DefaultChatBehaviour);
 
     builder.AddLuaControllers();
 
     builder.AddLogic<TdmResourceLogic>();
+    builder.AddLogic<ChatLogic>();
 
     builder.ConfigureServices(services =>
     {

@@ -101,6 +101,7 @@ public class Match
         {
             player.Team = this.Map!.Teams.OrderBy(x => x.Players.Count).First();
             player.ApplyMaxStats();
+            player.NametagColor = player.Team.Color;
         }
 
         foreach (var team in this.Map!.Teams)
