@@ -5,6 +5,7 @@ using SlipeFreeroam.Elements;
 using SlipeFreeroam.Logic;
 using SlipeFreeroam.Services;
 using SlipeServer.LuaControllers;
+using SlipeServer.Resources.Reload;
 using SlipeServer.Server;
 using SlipeServer.Server.Behaviour;
 using SlipeServer.Server.Loggers;
@@ -33,6 +34,8 @@ var server = MtaServer.CreateWithDiSupport<FreeroamPlayer>(builder =>
     builder.AddLogic<FreeroamResourceLogic>();
     builder.AddLogic<SpawnLogic>();
     builder.AddLogic<ChatLogic>();
+
+    builder.AddReloadResource();
 
     builder.AddLuaControllers();
 });

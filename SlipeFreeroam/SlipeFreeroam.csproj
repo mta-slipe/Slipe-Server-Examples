@@ -18,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="SlipeServer.LuaControllers" Version="0.1.0-CI-20221113-154116" />
     <PackageReference Include="SlipeServer.Server" Version="0.1.0-CI-20221113-154116" />
+	<PackageReference Include="SlipeServer.Resources.Reload" Version="0.1.0-CI-20221112-215054" />
   </ItemGroup>
 
 	<ItemGroup>
