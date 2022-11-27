@@ -1,4 +1,5 @@
-﻿using SlipeServer.Packets.Lua.Camera;
+﻿using SlipeFreeroam.Elements;
+using SlipeServer.Packets.Lua.Camera;
 using SlipeServer.Server;
 using SlipeServer.Server.Elements;
 using SlipeServer.Server.Elements.Enums;
@@ -14,16 +15,18 @@ public class SpawnLogic
     private readonly Random random = new();
     private readonly ChatBox chatBox;
 
-    public SpawnLogic(MtaServer server, ChatBox chatBox)
+    public SpawnLogic(MtaServer<FreeroamPlayer> server, ChatBox chatBox)
     {
         this.chatBox = chatBox;
 
         server.PlayerJoined += HandlePlayerJoin;
     }
 
-    private void HandlePlayerJoin(Player player)
+    private void HandlePlayerJoin(FreeroamPlayer player)
     {
-        player.NametagColor = GetRandomColor();
+        var color = GetRandomColor();
+        player.NametagColor = color;
+        player.Blip.Color = color;
 
         player.Spawn(new Vector3(0, 0, 3), 0, (ushort)PedModel.Cj, 0, 0);
         player.Camera.Target = player;

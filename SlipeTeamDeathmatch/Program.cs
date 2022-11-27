@@ -1,7 +1,9 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using SlipeServer.LuaControllers;
+using SlipeServer.Packets.Definitions.Sync;
 using SlipeServer.Resources.Reload;
 using SlipeServer.Server;
 using SlipeServer.Server.ElementCollections;
@@ -25,7 +27,16 @@ Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetEntryAssembly()!
 var server = MtaServer.Create<TdmPlayer>(builder =>
 {
     builder.UseConfiguration(TdmConfiguration.Config);
-    builder.AddDefaults(exceptBehaviours: ServerBuilderDefaultBehaviours.DefaultChatBehaviour);
+    builder.AddDefaults(
+        exceptBehaviours: 
+            ServerBuilderDefaultBehaviours.DefaultChatBehaviour | 
+            ServerBuilderDefaultBehaviours.LightSyncBehaviour
+        , 
+        exceptMiddleware: 
+            ServerBuilderDefaultMiddleware.PlayerPureSyncPacketMiddleware | 
+            ServerBuilderDefaultMiddleware.KeySyncPacketMiddleware |
+            ServerBuilderDefaultMiddleware.ProjectileSyncPacketMiddleware
+    );
 
     builder.AddLuaControllers();
 

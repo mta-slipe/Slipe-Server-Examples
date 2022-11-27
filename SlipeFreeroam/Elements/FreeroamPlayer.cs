@@ -33,8 +33,7 @@ public class FreeroamPlayer : Player
 
         this.Vehicles = new();
         this.PersonalSettings = new();
-        this.Blip = new Blip(this.position, BlipIcon.Marker).AssociateWith(server);
-        this.Blip.AttachTo(this);
+        this.Blip = this.CreateBlipFor(BlipIcon.Marker).AssociateWith(server);
 
         this.Name = Name.StripColorCode();
 
