@@ -25,6 +25,7 @@ public class Match
     private readonly List<Death> deaths;
     public IReadOnlyCollection<Death> Deaths => this.deaths.AsReadOnly();
 
+
     public bool CanStart => this.State == MatchState.Lobby && this.Map != null;
 
     public Match(int id, string name, TdmPlayer host)

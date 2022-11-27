@@ -57,9 +57,11 @@ addEventHandler("Slipe.TeamDeathMatch.Match", root, function(data)
 	if (match.state == "Lobby") then
 		populateMatchUi()
 		setMatchesUiVisible(false)
+		setReviewUiVisible(false)
 		setMatchUiVisible(true)
 	elseif (match.state == "Review") then
-		
+		populateReviewUi()
+		setReviewUiVisible(true)
 	end
 end)
 

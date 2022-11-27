@@ -3,6 +3,7 @@
 	createMatchesUi()
 	createMatchUi()
 	createMapsUi()
+	createReviewUi()
 end
 addEventHandler("onClientResourceStart", resourceRoot, init)
 

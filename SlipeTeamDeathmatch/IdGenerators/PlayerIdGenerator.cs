@@ -20,6 +20,7 @@ public class PlayerIdGenerator : IElementIdGenerator
 
     public uint GetId()
     {
+        this.idCounter++;
         var start = this.idCounter;
         while (this.elementCollection.Get(this.idCounter) != null)
         {

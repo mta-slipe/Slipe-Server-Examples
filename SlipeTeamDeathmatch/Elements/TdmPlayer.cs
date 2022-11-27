@@ -68,7 +68,8 @@ public class TdmPlayer : Player
             ["name"] = this.Name,
             ["matchCount"] = this.Account.MatchCount,
             ["killCount"] = this.Account.KillCount,
-            ["deathCount"] = this.Account.DeathCount
+            ["deathCount"] = this.Account.DeathCount,
+            ["team"] = this.Team?.TeamName ?? "N/A"
         });
     }
 }

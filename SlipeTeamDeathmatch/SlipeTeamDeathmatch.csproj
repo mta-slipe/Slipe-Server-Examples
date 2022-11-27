@@ -32,4 +32,10 @@
 	  </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Resources\SlipeTdm\review-ui.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

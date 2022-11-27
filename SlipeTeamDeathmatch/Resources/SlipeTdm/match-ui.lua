@@ -40,8 +40,6 @@ function createMatchUi()
     ui.leaveButton = guiCreateButton(25, 375, 200, 50, "Leave", false, ui.matchWindow)
     addEventHandler("onClientGUIClick", ui.leaveButton, handleLeaveClick, false)
 
-
-
     setMatchUiVisible(false)
 end
 
