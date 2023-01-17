@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x86;x64</Platforms>
@@ -18,9 +18,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
-	<PackageReference Include="SlipeServer.LuaControllers" Version="0.1.0-CI-20221113-154116" />
-	<PackageReference Include="SlipeServer.Resources.Reload" Version="0.1.0-CI-20221112-215054" />
-	<PackageReference Include="SlipeServer.Server" Version="0.1.0-CI-20221113-154116" />
+	<PackageReference Include="SlipeServer.LuaControllers" Version="0.1.0-CI-20230117-002825" />
+	<PackageReference Include="SlipeServer.Resources.Reload" Version="0.1.0-CI-20230116-171857" />
+	<PackageReference Include="SlipeServer.Server" Version="0.1.0-CI-20230117-002825" />
   </ItemGroup>
 
   <ItemGroup>
